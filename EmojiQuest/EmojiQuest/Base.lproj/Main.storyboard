@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Kingthings_Petrock.ttf">
+            <string>KingthingsPetrock</string>
+            <string>KingthingsPetrock</string>
+            <string>KingthingsPetrock</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="EmojiQuest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +24,249 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crossedSwords.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ob2-6w-uMS">
+                                <rect key="frame" x="220" y="28" width="160" height="160"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EmojiQuest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSS-uk-ozV">
+                                <rect key="frame" x="224" y="196" width="152" height="42"/>
+                                <fontDescription key="fontDescription" name="KingthingsPetrock" family="Kingthings Petrock" pointSize="37"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1q-yN-TdV">
+                                <rect key="frame" x="263" y="269" width="75" height="30"/>
+                                <state key="normal" title="New Game">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="CGt-FR-RrA" kind="show" identifier="startNewGame" id="ySZ-oy-91Z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIO-oa-0Ei">
+                                <rect key="frame" x="269" y="317" width="62" height="30"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" red="0.4638573232323232" green="0.4638573232323232" blue="0.4638573232323232" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="CGt-FR-RrA" kind="show" identifier="continueGame" id="GrC-Rq-U6B"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbL-Fg-9Xm">
+                                <rect key="frame" x="272" y="365" width="57" height="30"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Zbr-4Q-CRT" kind="show" identifier="showSettings" id="wh2-1G-TSr"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright 2016 - Red Salsa Dress Studios" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fx-f0-wvf">
+                                <rect key="frame" x="182" y="565" width="237" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.11594460227272729" green="0.11594460227272729" blue="0.11594460227272729" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="OSS-uk-ozV" firstAttribute="centerX" secondItem="Ob2-6w-uMS" secondAttribute="centerX" id="7rp-3B-TXe"/>
+                            <constraint firstItem="7Fx-f0-wvf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AiD-oq-4nL"/>
+                            <constraint firstItem="OSS-uk-ozV" firstAttribute="top" secondItem="Ob2-6w-uMS" secondAttribute="bottom" constant="8" id="FqR-js-zlM"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7Fx-f0-wvf" secondAttribute="bottom" constant="20" id="MG5-8I-ggR"/>
+                            <constraint firstItem="lIO-oa-0Ei" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OY8-nc-cZN"/>
+                            <constraint firstItem="CbL-Fg-9Xm" firstAttribute="top" secondItem="lIO-oa-0Ei" secondAttribute="bottom" constant="18" id="Sff-bC-xW5"/>
+                            <constraint firstItem="r1q-yN-TdV" firstAttribute="top" secondItem="OSS-uk-ozV" secondAttribute="bottom" constant="31" id="bLA-yr-j4z"/>
+                            <constraint firstItem="Ob2-6w-uMS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="f66-v0-gpk"/>
+                            <constraint firstItem="CbL-Fg-9Xm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="irw-Rj-wrx"/>
+                            <constraint firstItem="r1q-yN-TdV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pY3-dt-3jT"/>
+                            <constraint firstItem="lIO-oa-0Ei" firstAttribute="top" secondItem="r1q-yN-TdV" secondAttribute="bottom" constant="18" id="q82-FU-nBx"/>
+                            <constraint firstItem="Ob2-6w-uMS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rMB-pt-mN3"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="103" y="194"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="yUS-v8-vgD">
+            <objects>
+                <viewController id="CGt-FR-RrA" customClass="GameViewController" customModule="EmojiQuest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bH2-Xd-EGH"/>
+                        <viewControllerLayoutGuide type="bottom" id="DtX-J2-Ih2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Aiz-vb-kMT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aYF-Sx-0CR">
+                                <rect key="frame" x="20" y="20" width="560" height="259"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="IowanOldStyle-Roman" family="Iowan Old Style" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d2E-6p-MGM">
+                                <rect key="frame" x="20" y="287" width="560" height="27"/>
+                                <color key="backgroundColor" red="0.20338147095959591" green="0.20338147095959591" blue="0.20338147095959591" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ne-qW-prq">
+                                <rect key="frame" x="558" y="322" width="22" height="22"/>
+                                <color key="tintColor" red="0.65017361111111116" green="0.65017361111111116" blue="0.65017361111111116" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.98654513888888884" green="0.98654513888888884" blue="0.98654513888888884" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ADd-3K-iC2" kind="presentation" identifier="showInGameMenu" id="q86-jI-AMF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="aYF-Sx-0CR" firstAttribute="top" secondItem="bH2-Xd-EGH" secondAttribute="bottom" id="9RC-s0-obD"/>
+                            <constraint firstItem="d2E-6p-MGM" firstAttribute="centerX" secondItem="aYF-Sx-0CR" secondAttribute="centerX" id="KMI-d4-Gef"/>
+                            <constraint firstItem="aYF-Sx-0CR" firstAttribute="trailing" secondItem="Aiz-vb-kMT" secondAttribute="trailingMargin" id="YVU-ca-uQH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="d2E-6p-MGM" secondAttribute="trailing" id="bmX-88-WMx"/>
+                            <constraint firstItem="d2E-6p-MGM" firstAttribute="top" secondItem="aYF-Sx-0CR" secondAttribute="bottom" constant="8" id="e7N-Ts-WlS"/>
+                            <constraint firstItem="aYF-Sx-0CR" firstAttribute="leading" secondItem="Aiz-vb-kMT" secondAttribute="leadingMargin" id="fg2-i6-dTP"/>
+                            <constraint firstItem="1Ne-qW-prq" firstAttribute="trailing" secondItem="d2E-6p-MGM" secondAttribute="trailing" id="jw1-IW-RzA"/>
+                            <constraint firstItem="d2E-6p-MGM" firstAttribute="centerY" secondItem="Aiz-vb-kMT" secondAttribute="centerY" id="lLr-8E-R6B"/>
+                            <constraint firstItem="1Ne-qW-prq" firstAttribute="top" secondItem="d2E-6p-MGM" secondAttribute="bottom" constant="8" id="pWb-kQ-q0c"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="d2E-6p-MGM" secondAttribute="leading" id="pvb-ar-e3g"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="gameText" destination="aYF-Sx-0CR" id="8b0-LQ-Sjk"/>
+                        <outlet property="playerInput" destination="d2E-6p-MGM" id="dLV-jW-f9C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MhO-ln-zsB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="-9"/>
+        </scene>
+        <!--In Game Menu View Controller-->
+        <scene sceneID="xxR-1V-nKs">
+            <objects>
+                <viewController id="ADd-3K-iC2" customClass="InGameMenuViewController" customModule="EmojiQuest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DDu-33-wxY"/>
+                        <viewControllerLayoutGuide type="bottom" id="qKt-ed-YIe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fpv-bJ-NcD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drt-TX-dl5">
+                                <rect key="frame" x="282" y="502" width="37" height="30"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="ADd-3K-iC2" eventType="touchUpInside" id="sbX-qN-zX6"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQG-h3-dJE">
+                                <rect key="frame" x="263" y="49" width="74" height="41"/>
+                                <fontDescription key="fontDescription" name="KingthingsPetrock" family="Kingthings Petrock" pointSize="36"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUk-R5-PSV">
+                                <rect key="frame" x="252" y="124" width="96" height="30"/>
+                                <state key="normal" title="Save and Quit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveAndQuitButtonPushed:" destination="ADd-3K-iC2" eventType="touchUpInside" id="5y0-lO-4wy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6E-6c-zS4">
+                                <rect key="frame" x="236" y="181" width="129" height="30"/>
+                                <state key="normal" title="Save and Continue">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveAndContinueButtonPushed:" destination="ADd-3K-iC2" eventType="touchUpInside" id="zPy-Mr-wcE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="XQG-h3-dJE" firstAttribute="centerX" secondItem="fpv-bJ-NcD" secondAttribute="centerX" id="2NP-5p-tHr"/>
+                            <constraint firstItem="T6E-6c-zS4" firstAttribute="top" secondItem="DUk-R5-PSV" secondAttribute="bottom" constant="27" id="CGD-IQ-KZJ"/>
+                            <constraint firstItem="DUk-R5-PSV" firstAttribute="top" secondItem="XQG-h3-dJE" secondAttribute="bottom" constant="34" id="HbS-Qh-e1u"/>
+                            <constraint firstItem="qKt-ed-YIe" firstAttribute="top" secondItem="drt-TX-dl5" secondAttribute="bottom" constant="68" id="Mbb-Tl-cge"/>
+                            <constraint firstItem="DUk-R5-PSV" firstAttribute="centerX" secondItem="XQG-h3-dJE" secondAttribute="centerX" id="UXO-dU-6NR"/>
+                            <constraint firstItem="drt-TX-dl5" firstAttribute="centerX" secondItem="fpv-bJ-NcD" secondAttribute="centerX" id="etL-s8-mdy"/>
+                            <constraint firstItem="XQG-h3-dJE" firstAttribute="top" secondItem="DDu-33-wxY" secondAttribute="bottom" constant="29" id="h5q-aw-xlY"/>
+                            <constraint firstItem="T6E-6c-zS4" firstAttribute="centerX" secondItem="fpv-bJ-NcD" secondAttribute="centerX" id="mCl-Yd-8aY"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="owm-us-QnR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1506" y="-9"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="yny-Id-LtN">
+            <objects>
+                <viewController id="Zbr-4Q-CRT" customClass="SettingsViewController" customModule="EmojiQuest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Iyt-J1-C2B"/>
+                        <viewControllerLayoutGuide type="bottom" id="o2R-gB-2De"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="env-uw-LrY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsj-DO-sXi">
+                                <rect key="frame" x="257" y="64" width="87" height="33"/>
+                                <fontDescription key="fontDescription" name="KingthingsPetrock" family="Kingthings Petrock" pointSize="29"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYJ-Sa-kiJ">
+                                <rect key="frame" x="75" y="417" width="40" height="30"/>
+                                <state key="normal" title="Apply">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="applyButtonPressed:" destination="Zbr-4Q-CRT" eventType="touchUpInside" id="Itt-fK-ibz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvo-Tf-uHu">
+                                <rect key="frame" x="477" y="417" width="48" height="30"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="Zbr-4Q-CRT" eventType="touchUpInside" id="PVZ-zz-ybO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="qsj-DO-sXi" firstAttribute="centerX" secondItem="env-uw-LrY" secondAttribute="centerX" id="Aj6-18-HQK"/>
+                            <constraint firstItem="qsj-DO-sXi" firstAttribute="top" secondItem="Iyt-J1-C2B" secondAttribute="bottom" constant="44" id="Urr-UR-Gfs"/>
+                            <constraint firstItem="jYJ-Sa-kiJ" firstAttribute="leading" secondItem="env-uw-LrY" secondAttribute="leadingMargin" constant="55" id="bfV-lw-0qW"/>
+                            <constraint firstItem="o2R-gB-2De" firstAttribute="top" secondItem="vvo-Tf-uHu" secondAttribute="bottom" constant="153" id="epu-Qp-neF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vvo-Tf-uHu" secondAttribute="trailing" constant="55" id="y4p-eX-hlS"/>
+                            <constraint firstItem="o2R-gB-2De" firstAttribute="top" secondItem="jYJ-Sa-kiJ" secondAttribute="bottom" constant="153" id="ycA-Ut-SyK"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vWP-DA-sS1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="676"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="crossedSwords.png" width="160" height="160"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="GrC-Rq-U6B"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SettingsProtocol, GameViewProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,32 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func dismissSettings() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func dismissView() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier! {
+        case "showSettings":
+            let settingsView = segue.destinationViewController as! SettingsViewController
+            settingsView.delegate = self
+            break
+        case "startNewGame":
+            let gameView = segue.destinationViewController as! GameViewController
+            gameView.delegate = self
+            break
+        case "continueGame":
+            let gameView = segue.destinationViewController as! GameViewController
+            gameView.delegate = self
+            break
+        default:
+            assert(false, "Invalid Segue")
+        }
+    }
 }
 
