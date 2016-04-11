@@ -14,6 +14,8 @@
 		E664F96C1C8E2118007CF915 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = E664F96B1C8E2118007CF915 /* Story.swift */; };
 		E664F96E1C8E2151007CF915 /* InGameMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E664F96D1C8E2151007CF915 /* InGameMenuViewController.swift */; };
 		E6BDAF931C8E11D300E18419 /* crossedSwords.png in Resources */ = {isa = PBXBuildFile; fileRef = E6BDAF921C8E11D300E18419 /* crossedSwords.png */; };
+		F06B01AD1CBC1C37001C7A82 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B01AC1CBC1C37001C7A82 /* Item.swift */; };
+		F06B01AF1CBC1CC9001C7A82 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B01AE1CBC1CC9001C7A82 /* GameManager.swift */; };
 		F088434D1C87A99800F25958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F088434C1C87A99800F25958 /* AppDelegate.swift */; };
 		F088434F1C87A99800F25958 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F088434E1C87A99800F25958 /* ViewController.swift */; };
 		F08843521C87A99800F25958 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F08843501C87A99800F25958 /* Main.storyboard */; };
@@ -42,6 +44,8 @@
 		E664F96B1C8E2118007CF915 /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		E664F96D1C8E2151007CF915 /* InGameMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InGameMenuViewController.swift; sourceTree = "<group>"; };
 		E6BDAF921C8E11D300E18419 /* crossedSwords.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crossedSwords.png; sourceTree = "<group>"; };
+		F06B01AC1CBC1C37001C7A82 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		F06B01AE1CBC1CC9001C7A82 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		F08843491C87A99800F25958 /* EmojiQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F088434C1C87A99800F25958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F088434E1C87A99800F25958 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +91,8 @@
 			children = (
 				E664F9691C8E210A007CF915 /* Player.swift */,
 				E664F96B1C8E2118007CF915 /* Story.swift */,
+				F06B01AC1CBC1C37001C7A82 /* Item.swift */,
+				F06B01AE1CBC1CC9001C7A82 /* GameManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -198,9 +204,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F088434F1C87A99800F25958 /* ViewController.swift in Sources */,
+				F06B01AF1CBC1CC9001C7A82 /* GameManager.swift in Sources */,
 				E664F9551C8E17A4007CF915 /* GameViewController.swift in Sources */,
 				F088434D1C87A99800F25958 /* AppDelegate.swift in Sources */,
 				E664F96A1C8E210A007CF915 /* Player.swift in Sources */,
+				F06B01AD1CBC1C37001C7A82 /* Item.swift in Sources */,
 				E664F9571C8E1871007CF915 /* SettingsViewController.swift in Sources */,
 				E664F96E1C8E2151007CF915 /* InGameMenuViewController.swift in Sources */,
 				E664F96C1C8E2118007CF915 /* Story.swift in Sources */,

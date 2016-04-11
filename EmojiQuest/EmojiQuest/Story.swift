@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+class Story {
+    static let sharedInstance = Story()
+    
+    var isTutorial = true
+    
+    init() {
+        
+    }
+    
+    func endTutorial() {
+        isTutorial = false // Reset tutorial in GameManager
+    }
+}

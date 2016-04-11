@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Kingthings_Petrock.ttf">
+            <string>KingthingsPetrock</string>
+            <string>KingthingsPetrock</string>
             <string>KingthingsPetrock</string>
             <string>KingthingsPetrock</string>
             <string>KingthingsPetrock</string>
@@ -122,11 +124,27 @@
                                     <segue destination="ADd-3K-iC2" kind="presentation" identifier="showInGameMenu" id="q86-jI-AMF"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDk-4o-J4K">
+                                <rect key="frame" x="20" y="322" width="36.5" height="19"/>
+                                <fontDescription key="fontDescription" name="KingthingsPetrock" family="Kingthings Petrock" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJr-kU-A1i">
+                                <rect key="frame" x="64" y="322" width="3" height="14"/>
+                                <fontDescription key="fontDescription" name="KingthingsPetrock" family="Kingthings Petrock" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="aYF-Sx-0CR" firstAttribute="top" secondItem="bH2-Xd-EGH" secondAttribute="bottom" id="9RC-s0-obD"/>
                             <constraint firstItem="d2E-6p-MGM" firstAttribute="centerX" secondItem="aYF-Sx-0CR" secondAttribute="centerX" id="KMI-d4-Gef"/>
+                            <constraint firstItem="OJr-kU-A1i" firstAttribute="top" secondItem="d2E-6p-MGM" secondAttribute="bottom" constant="8" id="MIA-6F-iUj"/>
+                            <constraint firstItem="uDk-4o-J4K" firstAttribute="top" secondItem="d2E-6p-MGM" secondAttribute="bottom" constant="8" id="Q9l-Nf-xsc"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="uDk-4o-J4K" secondAttribute="leading" id="X25-ae-hF0"/>
+                            <constraint firstItem="OJr-kU-A1i" firstAttribute="leading" secondItem="uDk-4o-J4K" secondAttribute="trailing" constant="7.5" id="X6g-sK-AaB"/>
                             <constraint firstItem="aYF-Sx-0CR" firstAttribute="trailing" secondItem="Aiz-vb-kMT" secondAttribute="trailingMargin" id="YVU-ca-uQH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="d2E-6p-MGM" secondAttribute="trailing" id="bmX-88-WMx"/>
                             <constraint firstItem="d2E-6p-MGM" firstAttribute="top" secondItem="aYF-Sx-0CR" secondAttribute="bottom" constant="8" id="e7N-Ts-WlS"/>
@@ -140,6 +158,7 @@
                     <connections>
                         <outlet property="gameText" destination="aYF-Sx-0CR" id="8b0-LQ-Sjk"/>
                         <outlet property="playerInput" destination="d2E-6p-MGM" id="dLV-jW-f9C"/>
+                        <outlet property="scoreLabel" destination="OJr-kU-A1i" id="kYB-lY-fs0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhO-ln-zsB" userLabel="First Responder" sceneMemberID="firstResponder"/>

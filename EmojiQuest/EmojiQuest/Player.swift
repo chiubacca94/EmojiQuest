@@ -7,3 +7,18 @@
 //
 
 import Foundation
+
+class Player {
+    static let sharedInstance = Player()
+    
+    var inventory: [Item]
+    
+    init() {
+        inventory = [Item]()
+    }
+    
+    func printOutInventory() -> String {
+        // TODO
+        return ""
+    }
+}

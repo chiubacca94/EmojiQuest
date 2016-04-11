@@ -16,12 +16,17 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
 
     @IBOutlet weak var playerInput: UITextField!
     @IBOutlet weak var gameText: UITextView!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     var delegate : GameViewProtocol?
+    let gameManager = GameManager.sharedInstance
+    let story = Story.sharedInstance
+    let player = Player.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.playerInput.delegate = self
+        scoreLabel.text = String(gameManager.getScore())
     }
 
     override func didReceiveMemoryWarning() {
