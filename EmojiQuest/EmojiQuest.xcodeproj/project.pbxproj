@@ -13,6 +13,17 @@
 		E664F96A1C8E210A007CF915 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E664F9691C8E210A007CF915 /* Player.swift */; };
 		E664F96C1C8E2118007CF915 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = E664F96B1C8E2118007CF915 /* Story.swift */; };
 		E664F96E1C8E2151007CF915 /* InGameMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E664F96D1C8E2151007CF915 /* InGameMenuViewController.swift */; };
+		E6791D491CBC639400F4A4E3 /* Forest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D481CBC639400F4A4E3 /* Forest.swift */; };
+		E6791D4B1CBC63A400F4A4E3 /* Castle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D4A1CBC63A400F4A4E3 /* Castle.swift */; };
+		E6791D4D1CBC63C600F4A4E3 /* Village.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D4C1CBC63C600F4A4E3 /* Village.swift */; };
+		E6791D511CBC71A200F4A4E3 /* Stewart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D501CBC71A200F4A4E3 /* Stewart.swift */; };
+		E6791D531CBC71B800F4A4E3 /* King.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D521CBC71B800F4A4E3 /* King.swift */; };
+		E6791D551CBC71C000F4A4E3 /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D541CBC71C000F4A4E3 /* Queen.swift */; };
+		E6791D571CBC71CA00F4A4E3 /* Woodsman.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D561CBC71CA00F4A4E3 /* Woodsman.swift */; };
+		E6791D591CBC71D600F4A4E3 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D581CBC71D600F4A4E3 /* Knight.swift */; };
+		E6791D5B1CBC71EA00F4A4E3 /* Wizard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D5A1CBC71EA00F4A4E3 /* Wizard.swift */; };
+		E6791D5D1CBC720800F4A4E3 /* NPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D5C1CBC720800F4A4E3 /* NPC.swift */; };
+		E6791D5F1CBC731400F4A4E3 /* Merchant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D5E1CBC731400F4A4E3 /* Merchant.swift */; };
 		E6BDAF931C8E11D300E18419 /* crossedSwords.png in Resources */ = {isa = PBXBuildFile; fileRef = E6BDAF921C8E11D300E18419 /* crossedSwords.png */; };
 		F06B01AD1CBC1C37001C7A82 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B01AC1CBC1C37001C7A82 /* Item.swift */; };
 		F06B01AF1CBC1CC9001C7A82 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B01AE1CBC1CC9001C7A82 /* GameManager.swift */; };
@@ -43,6 +54,17 @@
 		E664F9691C8E210A007CF915 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		E664F96B1C8E2118007CF915 /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		E664F96D1C8E2151007CF915 /* InGameMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InGameMenuViewController.swift; sourceTree = "<group>"; };
+		E6791D481CBC639400F4A4E3 /* Forest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forest.swift; sourceTree = "<group>"; };
+		E6791D4A1CBC63A400F4A4E3 /* Castle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Castle.swift; sourceTree = "<group>"; };
+		E6791D4C1CBC63C600F4A4E3 /* Village.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Village.swift; sourceTree = "<group>"; };
+		E6791D501CBC71A200F4A4E3 /* Stewart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stewart.swift; sourceTree = "<group>"; };
+		E6791D521CBC71B800F4A4E3 /* King.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = King.swift; sourceTree = "<group>"; };
+		E6791D541CBC71C000F4A4E3 /* Queen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
+		E6791D561CBC71CA00F4A4E3 /* Woodsman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Woodsman.swift; sourceTree = "<group>"; };
+		E6791D581CBC71D600F4A4E3 /* Knight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
+		E6791D5A1CBC71EA00F4A4E3 /* Wizard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wizard.swift; sourceTree = "<group>"; };
+		E6791D5C1CBC720800F4A4E3 /* NPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NPC.swift; sourceTree = "<group>"; };
+		E6791D5E1CBC731400F4A4E3 /* Merchant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Merchant.swift; sourceTree = "<group>"; };
 		E6BDAF921C8E11D300E18419 /* crossedSwords.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crossedSwords.png; sourceTree = "<group>"; };
 		F06B01AC1CBC1C37001C7A82 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F06B01AE1CBC1CC9001C7A82 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
@@ -89,12 +111,39 @@
 		E664F9681C8E20F9007CF915 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E6791D4E1CBC717700F4A4E3 /* Story */,
 				E664F9691C8E210A007CF915 /* Player.swift */,
-				E664F96B1C8E2118007CF915 /* Story.swift */,
+				E6791D4F1CBC718800F4A4E3 /* NPCs */,
 				F06B01AC1CBC1C37001C7A82 /* Item.swift */,
 				F06B01AE1CBC1CC9001C7A82 /* GameManager.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		E6791D4E1CBC717700F4A4E3 /* Story */ = {
+			isa = PBXGroup;
+			children = (
+				E664F96B1C8E2118007CF915 /* Story.swift */,
+				E6791D481CBC639400F4A4E3 /* Forest.swift */,
+				E6791D4C1CBC63C600F4A4E3 /* Village.swift */,
+				E6791D4A1CBC63A400F4A4E3 /* Castle.swift */,
+			);
+			name = Story;
+			sourceTree = "<group>";
+		};
+		E6791D4F1CBC718800F4A4E3 /* NPCs */ = {
+			isa = PBXGroup;
+			children = (
+				E6791D501CBC71A200F4A4E3 /* Stewart.swift */,
+				E6791D521CBC71B800F4A4E3 /* King.swift */,
+				E6791D541CBC71C000F4A4E3 /* Queen.swift */,
+				E6791D561CBC71CA00F4A4E3 /* Woodsman.swift */,
+				E6791D581CBC71D600F4A4E3 /* Knight.swift */,
+				E6791D5A1CBC71EA00F4A4E3 /* Wizard.swift */,
+				E6791D5C1CBC720800F4A4E3 /* NPC.swift */,
+				E6791D5E1CBC731400F4A4E3 /* Merchant.swift */,
+			);
+			name = NPCs;
 			sourceTree = "<group>";
 		};
 		F08843401C87A99800F25958 = {
@@ -203,15 +252,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6791D4D1CBC63C600F4A4E3 /* Village.swift in Sources */,
+				E6791D571CBC71CA00F4A4E3 /* Woodsman.swift in Sources */,
+				E6791D591CBC71D600F4A4E3 /* Knight.swift in Sources */,
 				F088434F1C87A99800F25958 /* ViewController.swift in Sources */,
 				F06B01AF1CBC1CC9001C7A82 /* GameManager.swift in Sources */,
 				E664F9551C8E17A4007CF915 /* GameViewController.swift in Sources */,
+				E6791D5D1CBC720800F4A4E3 /* NPC.swift in Sources */,
 				F088434D1C87A99800F25958 /* AppDelegate.swift in Sources */,
 				E664F96A1C8E210A007CF915 /* Player.swift in Sources */,
+				E6791D551CBC71C000F4A4E3 /* Queen.swift in Sources */,
+				E6791D531CBC71B800F4A4E3 /* King.swift in Sources */,
+				E6791D5B1CBC71EA00F4A4E3 /* Wizard.swift in Sources */,
 				F06B01AD1CBC1C37001C7A82 /* Item.swift in Sources */,
+				E6791D491CBC639400F4A4E3 /* Forest.swift in Sources */,
 				E664F9571C8E1871007CF915 /* SettingsViewController.swift in Sources */,
+				E6791D4B1CBC63A400F4A4E3 /* Castle.swift in Sources */,
 				E664F96E1C8E2151007CF915 /* InGameMenuViewController.swift in Sources */,
+				E6791D511CBC71A200F4A4E3 /* Stewart.swift in Sources */,
 				E664F96C1C8E2118007CF915 /* Story.swift in Sources */,
+				E6791D5F1CBC731400F4A4E3 /* Merchant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

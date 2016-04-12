@@ -21,4 +21,8 @@ class Player {
         // TODO
         return ""
     }
+    
+    func newPlayer() {
+        inventory = [Item]()
+    }
 }

@@ -26,21 +26,13 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     override func viewDidLoad() {
         super.viewDidLoad()
         self.playerInput.delegate = self
+        gameManager.newGame()
         scoreLabel.text = String(gameManager.getScore())
+        gameText.text = gameManager.newGameText()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    // MARK: TextField Delegate
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()    // Potentially remove to keep keyboard up
-        // THIS IS WHERE CALL TO MODEL FOR RESPONSE IS
-        gameText.text = gameText.text + playerInput.text! + "\n"
-        playerInput.text = ""
-        return true
     }
     
     func dismissMenu() {
@@ -50,6 +42,13 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     func exitToMainMenu() {
         dismissViewControllerAnimated(true, completion: nil)
         delegate!.dismissView()
+    }
+    
+    // MARK: TextField Delegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        gameText.text = gameText.text + playerInput.text! + story.replyToText(playerInput.text!)
+        playerInput.text = ""
+        return true
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

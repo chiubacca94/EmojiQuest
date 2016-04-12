@@ -26,7 +26,12 @@ class GameManager {
     }
     
     func newGame() {
-        // TODO
+        score = 0
+        player.newPlayer()
+    }
+    
+    func newGameText() -> String {
+        return "Wake up, ya doofus! Ya got work to do!"
     }
     
     func gameOver() {

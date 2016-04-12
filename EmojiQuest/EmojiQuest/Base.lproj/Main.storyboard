@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -103,19 +103,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aYF-Sx-0CR">
-                                <rect key="frame" x="20" y="20" width="560" height="259"/>
+                                <rect key="frame" x="20" y="20" width="560" height="269"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="IowanOldStyle-Roman" family="Iowan Old Style" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d2E-6p-MGM">
-                                <rect key="frame" x="20" y="287" width="560" height="27"/>
+                                <rect key="frame" x="20" y="297" width="560" height="27"/>
                                 <color key="backgroundColor" red="0.20338147095959591" green="0.20338147095959591" blue="0.20338147095959591" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ne-qW-prq">
-                                <rect key="frame" x="558" y="322" width="22" height="22"/>
+                                <rect key="frame" x="558" y="332" width="22" height="22"/>
                                 <color key="tintColor" red="0.65017361111111116" green="0.65017361111111116" blue="0.65017361111111116" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal">
                                     <color key="titleColor" red="0.98654513888888884" green="0.98654513888888884" blue="0.98654513888888884" alpha="1" colorSpace="calibratedRGB"/>
@@ -125,13 +125,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDk-4o-J4K">
-                                <rect key="frame" x="20" y="322" width="36.5" height="19"/>
+                                <rect key="frame" x="20" y="332" width="37" height="19"/>
                                 <fontDescription key="fontDescription" name="KingthingsPetrock" family="Kingthings Petrock" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJr-kU-A1i">
-                                <rect key="frame" x="64" y="322" width="3" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJr-kU-A1i">
+                                <rect key="frame" x="64" y="332" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="KingthingsPetrock" family="Kingthings Petrock" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -140,9 +140,11 @@
                         <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="aYF-Sx-0CR" firstAttribute="top" secondItem="bH2-Xd-EGH" secondAttribute="bottom" id="9RC-s0-obD"/>
+                            <constraint firstItem="d2E-6p-MGM" firstAttribute="centerY" secondItem="Aiz-vb-kMT" secondAttribute="centerY" constant="10" id="B31-hy-Pk8"/>
                             <constraint firstItem="d2E-6p-MGM" firstAttribute="centerX" secondItem="aYF-Sx-0CR" secondAttribute="centerX" id="KMI-d4-Gef"/>
                             <constraint firstItem="OJr-kU-A1i" firstAttribute="top" secondItem="d2E-6p-MGM" secondAttribute="bottom" constant="8" id="MIA-6F-iUj"/>
                             <constraint firstItem="uDk-4o-J4K" firstAttribute="top" secondItem="d2E-6p-MGM" secondAttribute="bottom" constant="8" id="Q9l-Nf-xsc"/>
+                            <constraint firstItem="d2E-6p-MGM" firstAttribute="centerY" secondItem="Aiz-vb-kMT" secondAttribute="centerY" constant="5" id="SNI-yc-U9g"/>
                             <constraint firstAttribute="leadingMargin" secondItem="uDk-4o-J4K" secondAttribute="leading" id="X25-ae-hF0"/>
                             <constraint firstItem="OJr-kU-A1i" firstAttribute="leading" secondItem="uDk-4o-J4K" secondAttribute="trailing" constant="7.5" id="X6g-sK-AaB"/>
                             <constraint firstItem="aYF-Sx-0CR" firstAttribute="trailing" secondItem="Aiz-vb-kMT" secondAttribute="trailingMargin" id="YVU-ca-uQH"/>
@@ -150,10 +152,16 @@
                             <constraint firstItem="d2E-6p-MGM" firstAttribute="top" secondItem="aYF-Sx-0CR" secondAttribute="bottom" constant="8" id="e7N-Ts-WlS"/>
                             <constraint firstItem="aYF-Sx-0CR" firstAttribute="leading" secondItem="Aiz-vb-kMT" secondAttribute="leadingMargin" id="fg2-i6-dTP"/>
                             <constraint firstItem="1Ne-qW-prq" firstAttribute="trailing" secondItem="d2E-6p-MGM" secondAttribute="trailing" id="jw1-IW-RzA"/>
-                            <constraint firstItem="d2E-6p-MGM" firstAttribute="centerY" secondItem="Aiz-vb-kMT" secondAttribute="centerY" id="lLr-8E-R6B"/>
+                            <constraint firstItem="d2E-6p-MGM" firstAttribute="centerY" secondItem="Aiz-vb-kMT" secondAttribute="centerY" constant="-5" id="lLr-8E-R6B"/>
                             <constraint firstItem="1Ne-qW-prq" firstAttribute="top" secondItem="d2E-6p-MGM" secondAttribute="bottom" constant="8" id="pWb-kQ-q0c"/>
                             <constraint firstAttribute="leadingMargin" secondItem="d2E-6p-MGM" secondAttribute="leading" id="pvb-ar-e3g"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="SNI-yc-U9g"/>
+                                <exclude reference="lLr-8E-R6B"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="gameText" destination="aYF-Sx-0CR" id="8b0-LQ-Sjk"/>
