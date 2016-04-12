@@ -29,9 +29,9 @@
 		F06B01AF1CBC1CC9001C7A82 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06B01AE1CBC1CC9001C7A82 /* GameManager.swift */; };
 		F088434D1C87A99800F25958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F088434C1C87A99800F25958 /* AppDelegate.swift */; };
 		F088434F1C87A99800F25958 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F088434E1C87A99800F25958 /* ViewController.swift */; };
-		F08843521C87A99800F25958 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F08843501C87A99800F25958 /* Main.storyboard */; };
 		F08843541C87A99800F25958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F08843531C87A99800F25958 /* Assets.xcassets */; };
 		F08843571C87A99800F25958 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F08843551C87A99800F25958 /* LaunchScreen.storyboard */; };
+		F0BFC2441CBCB8A50020848B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F08843501C87A99800F25958 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -238,10 +238,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F08843571C87A99800F25958 /* LaunchScreen.storyboard in Resources */,
+				F0BFC2441CBCB8A50020848B /* Main.storyboard in Resources */,
 				E6BDAF931C8E11D300E18419 /* crossedSwords.png in Resources */,
 				F08843541C87A99800F25958 /* Assets.xcassets in Resources */,
 				E664F9511C8E14D1007CF915 /* Kingthings_Petrock.ttf in Resources */,
-				F08843521C87A99800F25958 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
