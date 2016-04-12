@@ -8,6 +8,8 @@
 
 import UIKit
 
+let StoryUpdateNotificationKey = "com.RedSalsaDressStudios.storyUpdate"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

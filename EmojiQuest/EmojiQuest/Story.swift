@@ -8,11 +8,19 @@
 
 import Foundation
 
+enum StoryScene : Int {
+    case CastleTutorial = 1
+    case CastleTurningPoint = 2
+    case Forest = 3
+    case Village = 4
+    case CastleEnd = 5
+}
+
 class Story {
     static let sharedInstance = Story()
     
-    var isTutorial = true
-    var scene = 1
+    private var isTutorial = true
+    private var currentScene : StoryScene = .CastleTutorial
     let forest = Forest.sharedInstance
     let village = Village.sharedInstance
     let castle = Castle.sharedInstance
@@ -34,11 +42,11 @@ class Story {
     }
     
     func parseText(playerResponse: String) -> String {
-        switch (scene) {
-        case 1:
-            return castle.parseText(playerResponse, scene: scene)
-        case 2:
-            return castle.parseText(playerResponse, scene: scene)
+        switch (currentScene) {
+        case .CastleTutorial:
+            return castle.parseText(playerResponse, scene: currentScene)
+        case .CastleTurningPoint:
+            return castle.parseText(playerResponse, scene: currentScene)
         default:
             assert(false, "Invalid Actions")
             break
@@ -46,16 +54,37 @@ class Story {
     }
     
     func parseEmoji(playerResponse: String) -> String {
-        switch (scene) {
-        case 3:
+        switch (currentScene) {
+        case .Forest:
             return forest.parseEmoji(playerResponse)
-        case 4:
+        case .Village:
             return village.parseEmoji(playerResponse)
-        case 5:
+        case .CastleEnd:
             return castle.parseEmoji(playerResponse)
         default:
             assert(false, "Invalid Actions")
             break
+        }
+    }
+    
+    func transitionSceneTo(scene: StoryScene){
+        currentScene = scene
+        // add notification for controller
+        NSNotificationCenter.defaultCenter().postNotificationName(StoryUpdateNotificationKey, object: self)
+    }
+    
+    func introductoryText() -> String {
+        switch (currentScene) {
+        case .CastleTutorial:
+            return castle.introductoryText(currentScene)
+        case .CastleTurningPoint:
+            return castle.introductoryText(currentScene)
+        case .CastleEnd:
+            return castle.introductoryText(currentScene)
+        case .Forest:
+            return forest.introductoryText()
+        case .Village:
+            return village.introductoryText()
         }
     }
 }

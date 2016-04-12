@@ -13,12 +13,17 @@ class Forest {
     
     let story = Story.sharedInstance
     let woodsman = Woodsman.sharedInstance
+    var currentNPC : NPC?
     
     init() {
-        
+        currentNPC = woodsman
+    }
+    
+    func introductoryText() -> String {
+        return "You wake up in the middle of the woods. Your head hurts and your throat is sore. In front of you is a giant beast of a man, eating lunch. There are trees in every direction."
     }
     
     func parseEmoji(playerResponse: String) -> String {
-        return ""
+        return woodsman.respondTo(playerResponse)
     }
 }

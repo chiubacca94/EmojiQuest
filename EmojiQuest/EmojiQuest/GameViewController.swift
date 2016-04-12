@@ -26,11 +26,16 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     override func viewDidLoad() {
         super.viewDidLoad()
         self.playerInput.delegate = self
-        gameManager.newGame()
-        scoreLabel.text = String(gameManager.getScore())
-        gameText.text = gameManager.newGameText()
+        //let center = NSNotificationCenter.defaultCenter()
+        //center.addObserver(self, selector: "newScene:", name: StoryUpdateNotificationKey, object: nil)
     }
 
+    override func viewDidAppear(animated: Bool) {
+        gameManager.newGame()
+        scoreLabel.text = String(gameManager.getScore())
+        gameText.text = gameManager.newGameText() + "/n" + story.introductoryText() + "/n"
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -44,8 +49,13 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         delegate!.dismissView()
     }
     
+    func newScene() {
+        gameText.text = story.introductoryText()
+    }
+    
     // MARK: TextField Delegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
         gameText.text = gameText.text + playerInput.text! + story.replyToText(playerInput.text!)
         playerInput.text = ""
         return true
@@ -54,6 +64,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier! {
         case "showInGameMenu":
+            playerInput.resignFirstResponder()
             let menuView = segue.destinationViewController as! InGameMenuViewController
             menuView.delegate = self
             break
