@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, SettingsProtocol, GameViewProtocol {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -46,5 +46,6 @@ class ViewController: UIViewController, SettingsProtocol, GameViewProtocol {
             assert(false, "Invalid Segue")
         }
     }
+
 }
 

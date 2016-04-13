@@ -90,10 +90,10 @@
             </objects>
             <point key="canvasLocation" x="103" y="194"/>
         </scene>
-        <!--Game View Controller-->
+        <!--GameViewController-->
         <scene sceneID="yUS-v8-vgD">
             <objects>
-                <viewController id="CGt-FR-RrA" customClass="GameViewController" customModule="EmojiQuest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="GameViewController" id="CGt-FR-RrA" customClass="GameViewController" customModule="EmojiQuest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bH2-Xd-EGH"/>
                         <viewControllerLayoutGuide type="bottom" id="DtX-J2-Ih2"/>
