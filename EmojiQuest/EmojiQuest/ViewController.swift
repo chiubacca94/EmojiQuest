@@ -27,6 +27,9 @@ class ViewController: UIViewController, SettingsProtocol, GameViewProtocol {
     func dismissView() {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    
+    
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier! {
