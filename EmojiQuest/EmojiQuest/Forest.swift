@@ -11,7 +11,7 @@ import Foundation
 class Forest {
     static let sharedInstance = Forest()
     
-    let story = Story.sharedInstance
+//    let story = Story.sharedInstance
     let woodsman = Woodsman.sharedInstance
     var currentNPC : NPC?
     

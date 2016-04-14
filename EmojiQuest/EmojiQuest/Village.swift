@@ -11,7 +11,7 @@ import Foundation
 class Village {
     static let sharedInstance = Village()
     
-    let story = Story.sharedInstance
+//    let story = Story.sharedInstance
     let merchant = Merchant.sharedInstance
     
     var currentNPC : NPC?
