@@ -9,10 +9,9 @@
 import Foundation
 
 class Village {
-    
     static let sharedInstance = Village()
     
-//    let story = Story.sharedInstance
+   // let story = Story.sharedInstance
     let merchant = Merchant.sharedInstance
     
     var currentNPC : NPC?
@@ -21,7 +20,7 @@ class Village {
         
     }
     
-   func introductoryText() -> String {
+    func introductoryText() -> String {
         return "You end up in a village. Life! You turn to thank the woodsman only to find him..gone! *gasp* Oh wait, he just headed into the bar."
     }
     

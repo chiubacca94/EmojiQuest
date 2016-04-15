@@ -11,14 +11,12 @@ import Foundation
 class Item {
 //    var Name : String?
     
-    static let sharedInstance = Item()
-    
-    var itemDictionary: [String:Int] = [
+    var itemDictionary: [String:Int] = [    // item in array dictionary
         "coin" : 0,
         "lock pick" : 1
     ]
     
-    var items = [Int]()
+    var items = [Int]()                  // Array of Items
     
     // Print Items in inventory (description)
     func getItems(item:String){
@@ -31,19 +29,20 @@ class Item {
     
     // Add an item
     func addItem(item:String){
-        // Check if there is actually an item in the game's item database
-        if(itemDictionary[item] == nil){
-            print("\nNothing added because it doesn't exist!")
+        
+        // Check if there is actually an item in the game's "item database"
+        if (itemDictionary[item] == nil){
+            print("Nothing added because it doesn't exist!")
         }
         else{
             if let newItem = itemDictionary[item] {
                 items[newItem] += 1
             }
+            
         }
     }
     
-    
-    // Remove an item
+    // Use/Remove an item
     func removeItem(item:String){
         
         // Check if there is actually an item in the game's item database
@@ -62,7 +61,9 @@ class Item {
                 }
                 
             }
+            else{
+                items[deleteItem!] -= 1
+            }
         }
     }
-
 }

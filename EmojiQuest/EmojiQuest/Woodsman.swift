@@ -19,7 +19,7 @@ class Woodsman: NPC {
     static let sharedInstance = Woodsman()
     
     var currentState : WoodsmanState = WoodsmanState.FoundPlayer
-//    let story = Story.sharedInstance
+    //let story = Story.sharedInstance
     
     override init() {
         super.init()
@@ -56,7 +56,7 @@ class Woodsman: NPC {
     
     func parseResponseIfWilling(playerResponse: String) -> String {
         if playerResponse.containsString("🌲") {
-//            story.transitionSceneTo(StoryScene.Village)
+  //          story.transitionSceneTo(StoryScene.Village)
             return "The Woodsman grabs your hand and starts leading you away."
         } else {
             return "The Woodsman is staring at you"

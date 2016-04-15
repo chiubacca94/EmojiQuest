@@ -12,7 +12,7 @@ class GameManager {
    
     static let sharedInstance = GameManager()
     
-//    let story = Story.sharedInstance
+  //  let story = Story.sharedInstance
     let player = Player.sharedInstance
     
     var score = 0
@@ -20,7 +20,6 @@ class GameManager {
     
     func incrementScore(amount: Int) {
         score += amount
-        
     }
     
     func getScore() -> Int {
