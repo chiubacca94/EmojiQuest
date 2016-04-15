@@ -61,9 +61,6 @@ class Item {
                 }
                 
             }
-            else{
-                items[deleteItem!] -= 1
-            }
         }
     }
 }
