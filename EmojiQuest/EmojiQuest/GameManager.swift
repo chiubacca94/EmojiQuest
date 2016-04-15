@@ -32,7 +32,7 @@ class GameManager {
     }
     
     func newGameText() -> String {
-        return "Wake up, ya doofus! Ya got work to do!"
+        return "\nWake up, ya doofus! Ya got work to do!"
     }
     
     func gameOver() {

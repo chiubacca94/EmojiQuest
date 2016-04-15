@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 enum StoryScene : Int {
     case CastleTutorial = 1
     case CastleTurningPoint = 2
@@ -17,7 +18,8 @@ enum StoryScene : Int {
 }
 
 class Story {
-    static let sharedInstance = Story()
+    
+    static var sharedInstance = Story()
     
     private var isTutorial = true
     private var currentScene : StoryScene = .CastleTutorial
@@ -34,6 +36,8 @@ class Story {
     }
     
     func replyToText(playerResponse: String) -> String {
+      
+        // If in tutorial mode, can use text
         if (isTutorial) {
             return parseText(playerResponse)
         } else {

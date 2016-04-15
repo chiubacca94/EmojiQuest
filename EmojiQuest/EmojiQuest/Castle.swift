@@ -8,12 +8,11 @@
 
 import Foundation
 
-class Castle {
+class Castle{
     static let sharedInstance = Castle()
     
+//    let story = Story.sharedInstance
 
-    
-    //let story = Story.sharedInstance
     let stewart = Stewart.sharedInstance
     let king = King.sharedInstance
     let queen = Queen.sharedInstance
@@ -47,14 +46,14 @@ class Castle {
         var response: String = ""
         switch (currentNPC) {
         case is Stewart:
-            response = "Stewart talks"
+            response = "\nStewart talks\n"
             currentNPC = nil
             break
         case is Wizard:
-            response = "Wizard talks"
+            response = "\nWizard talks\n"
             break
         case is King:
-            response = "King talks"
+            response = "\nKing talks\n"
             break
         default:
             return utilityResponse(playerResponse)
@@ -66,19 +65,19 @@ class Castle {
         var response: String = ""
         switch (currentNPC) {
         case is Stewart:
-            response = "Stewart talks"
+            response = "\nStewart talks\n"
             break
         case is Knight:
-            response = "Knight talks"
+            response = "\nKnight talks\n"
             break
         case is Queen:
-            response = "Queen talks"
+            response = "\nQueen talks\n"
             break
         case is Wizard:
-            response = "Wizard talks"
+            response = "\nWizard talks\n"
             break
         case is King:
-            response = "King talks"
+            response = "\nKing talks\n"
             break
         default:
             return utilityResponse(playerResponse)
@@ -87,6 +86,6 @@ class Castle {
     }
     
     func utilityResponse(playerResponse: String) -> String {
-        return "Need to do this"
+        return "\nNeed to do this\n"
     }
 }

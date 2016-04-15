@@ -108,6 +108,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d2E-6p-MGM">
                                 <rect key="frame" x="20" y="297" width="560" height="27"/>
                                 <color key="backgroundColor" red="0.20338147095959591" green="0.20338147095959591" blue="0.20338147095959591" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.99511207460732987" green="0.99511207460732987" blue="0.99511207460732987" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                             </textField>
