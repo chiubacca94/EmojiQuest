@@ -26,8 +26,9 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     override func viewDidLoad() {
         super.viewDidLoad()
         self.playerInput.delegate = self
-        //let center = NSNotificationCenter.defaultCenter()
-        //center.addObserver(self, selector: "newScene:", name: StoryUpdateNotificationKey, object: nil)
+        let center = NSNotificationCenter.defaultCenter()
+        // New scene -- send notification (clear text and new scene)
+         center.addObserver(self, selector: "newScene:", name: StoryUpdateNotificationKey, object: nil)
     }
 
     override func viewDidAppear(animated: Bool) {

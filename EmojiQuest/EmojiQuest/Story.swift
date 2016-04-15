@@ -23,12 +23,12 @@ class Story {
     
     private var isTutorial = true
     private var currentScene : StoryScene = .CastleTutorial
-    let forest = Forest.sharedInstance
-    let village = Village.sharedInstance
+    //let forest = Forest.sharedInstance
+   // let village = Village.sharedInstance
     let castle = Castle.sharedInstance
     
     init() {
-        
+        NSLog("Story init")
     }
     
     func endTutorial() {
@@ -59,10 +59,10 @@ class Story {
     
     func parseEmoji(playerResponse: String) -> String {
         switch (currentScene) {
-        case .Forest:
-            return forest.parseEmoji(playerResponse)
-        case .Village:
-            return village.parseEmoji(playerResponse)
+   //     case .Forest:
+  //          return forest.parseEmoji(playerResponse)
+   //     case .Village:
+  //          return village.parseEmoji(playerResponse)
         case .CastleEnd:
             return castle.parseEmoji(playerResponse)
         default:
@@ -85,10 +85,14 @@ class Story {
             return castle.introductoryText(currentScene)
         case .CastleEnd:
             return castle.introductoryText(currentScene)
-        case .Forest:
-            return forest.introductoryText()
-        case .Village:
-            return village.introductoryText()
+//        case .Forest:
+//            return forest.introductoryText()
+//        case .Village:
+//            return village.introductoryText()
+        default:
+            assert(false, "Invalid operation")
         }
-    }
+ }
+
+
 }

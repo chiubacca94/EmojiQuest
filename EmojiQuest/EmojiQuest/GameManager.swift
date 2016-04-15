@@ -9,6 +9,7 @@
 import Foundation
 
 class GameManager {
+   
     static let sharedInstance = GameManager()
     
 //    let story = Story.sharedInstance
