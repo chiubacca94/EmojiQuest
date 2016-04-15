@@ -12,7 +12,7 @@ protocol GameViewProtocol {
     func dismissView()
 }
 
-class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProtocol {
+class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProtocol  {
 
     @IBOutlet weak var playerInput: UITextField!
     @IBOutlet weak var gameText: UITextView!
@@ -20,7 +20,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     
     var delegate : GameViewProtocol?
     let gameManager = GameManager.sharedInstance
-    let story = Story.sharedInstance
+    var story = Story()
     let player = Player.sharedInstance
     
     override func viewDidLoad() {
@@ -33,7 +33,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     override func viewDidAppear(animated: Bool) {
         gameManager.newGame()
         scoreLabel.text = String(gameManager.getScore())
-        gameText.text = gameManager.newGameText() + "/n" + story.introductoryText() + "/n"
+        gameText.text = gameManager.newGameText() + "\n" + story.introductoryText() + "\n"
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,8 +56,9 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     // MARK: TextField Delegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
-        gameText.text = gameText.text + playerInput.text! + story.replyToText(playerInput.text!)
+        gameText.text = gameText.text + "'" + playerInput.text! + "'" + story.replyToText(playerInput.text!)
         playerInput.text = ""
+        self.gameText.scrollRangeToVisible(NSMakeRange(-1, -1))
         return true
     }
     
@@ -72,5 +73,5 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
             assert(false, "Invalid Segue")
         }
     }
-
+    
 }

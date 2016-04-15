@@ -17,7 +17,8 @@ enum StoryScene : Int {
 }
 
 class Story {
-    static let sharedInstance = Story()
+    
+    static var sharedInstance = Story()
     
     private var isTutorial = true
     private var currentScene : StoryScene = .CastleTutorial

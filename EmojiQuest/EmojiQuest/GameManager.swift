@@ -11,7 +11,7 @@ import Foundation
 class GameManager {
     static let sharedInstance = GameManager()
     
-    let story = Story.sharedInstance
+//    let story = Story.sharedInstance
     let player = Player.sharedInstance
     
     var score = 0
@@ -31,7 +31,7 @@ class GameManager {
     }
     
     func newGameText() -> String {
-        return "Wake up, ya doofus! Ya got work to do!"
+        return "\nWake up, ya doofus! Ya got work to do!"
     }
     
     func gameOver() {
