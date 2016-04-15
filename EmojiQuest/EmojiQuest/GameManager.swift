@@ -19,6 +19,7 @@ class GameManager {
     
     func incrementScore(amount: Int) {
         score += amount
+        
     }
     
     func getScore() -> Int {

@@ -112,9 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				E6791D4E1CBC717700F4A4E3 /* Story */,
+				F06B01AC1CBC1C37001C7A82 /* Item.swift */,
 				E664F9691C8E210A007CF915 /* Player.swift */,
 				E6791D4F1CBC718800F4A4E3 /* NPCs */,
-				F06B01AC1CBC1C37001C7A82 /* Item.swift */,
 				F06B01AE1CBC1CC9001C7A82 /* GameManager.swift */,
 			);
 			name = Models;
