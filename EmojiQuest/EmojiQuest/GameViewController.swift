@@ -29,6 +29,8 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         let center = NSNotificationCenter.defaultCenter()
         // New scene -- send notification (clear text and new scene)
          center.addObserver(self, selector: "newScene:", name: StoryUpdateNotificationKey, object: nil)
+        // Have keyboard automatically appear
+        playerInput.becomeFirstResponder()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -36,6 +38,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         scoreLabel.text = String(gameManager.getScore())
         gameText.text = gameManager.newGameText() + "\n" + story.introductoryText() + "\n"
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
