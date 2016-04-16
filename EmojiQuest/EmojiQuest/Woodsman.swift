@@ -8,6 +8,8 @@
 
 import Foundation
 
+// make a library for speech
+
 enum WoodsmanState : String {
     case FoundPlayer = "foundPlayer"
     case Confused = "confused"
@@ -61,5 +63,11 @@ class Woodsman: NPC {
         } else {
             return "The Woodsman is staring at you"
         }
+    }
+    
+    func doTransition(){
+        StoryScene.Village;
+        
+        // true when change and change to
     }
 }
