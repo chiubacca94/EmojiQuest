@@ -17,12 +17,21 @@ enum StoryScene : Int {
     case CastleEnd = 5
 }
 
+enum curNPC : Int {
+    case Steward = 1
+    case Woodsman = 2
+    case Merchant = 3
+    case Queen = 4
+    case Wizard = 5
+}
+
 class Story {
     
     static var sharedInstance = Story()
     
     private var isTutorial = true
     private var currentScene : StoryScene = .CastleTutorial
+    private var currentNPC : curNPC = .Steward
     let forest = Forest.sharedInstance
     let village = Village.sharedInstance
     let castle = Castle.sharedInstance
@@ -48,9 +57,9 @@ class Story {
     func parseText(playerResponse: String) -> String {
         switch (currentScene) {
         case .CastleTutorial:
-            return castle.parseText(playerResponse, scene: currentScene)
+            return castle.parseText(playerResponse, scene: currentScene, NPC: currentNPC)
         case .CastleTurningPoint:
-            return castle.parseText(playerResponse, scene: currentScene)
+            return castle.parseText(playerResponse, scene: currentScene, NPC: currentNPC)
         default:
             assert(false, "Invalid Actions")
             break

@@ -1,3 +1,5 @@
+
+
 //
 //  Castle.swift
 //  EmojiQuest
@@ -21,6 +23,7 @@ class Castle{
     let knight = Knight.sharedInstance
     let wizard = Wizard.sharedInstance
     var player_speech = ""
+    var response_char = "\n"
     
     var currentNPC : NPC?
     
@@ -43,13 +46,13 @@ class Castle{
     }
     
 
-    func parseText(playerResponse: String, scene: StoryScene) -> String {
+    func parseText(playerResponse: String, scene: StoryScene, NPC: curNPC) -> String {
         var response: String = ""
+        
         player_speech = playerResponse
         switch (currentNPC) {
         case is Stewart:
             response = "\nStewert: Go mop the floor! (Type 'Mop Floor')\n"
-            stewart.utilityResponse(playerResponse)
             currentNPC = nil
             break
         case is Wizard:
@@ -60,7 +63,12 @@ class Castle{
             story_progression_count = 10
             break
         default:
-            return utilityResponse(playerResponse)
+            if(NPC == .Steward){
+                return stewart.utilityResponse(playerResponse)
+            }
+            else if(NPC == .Woodsman){
+                return ""
+            }
         }
         return response
     }
@@ -70,6 +78,7 @@ class Castle{
         switch (currentNPC) {
         case is Stewart:
             response = "\nStewart talks\n"
+            stewart.utilityResponse(playerResponse)
             break
         case is Knight:
             response = "\nKnight talks\n"
@@ -85,35 +94,50 @@ class Castle{
             break
         default:
             return utilityResponse(playerResponse)
+        
         }
         return response
     }
     
     func utilityResponse(playerResponse: String) -> String {
        
-        var response_char = "\n"
+        response_char = "\n"
         
-        while(story_progression_count < 10){
-            if(story_progression_count == 0 && playerResponse == "Mop Floor"){
-                response_char = "\nThanks! Now do this next task. Clean\n "
-                story_progression_count += 1
-                break;
-            }
-            else if(story_progression_count == 0){
-                response_char = "\nLISTEN TO ME! (Type: Mop Floor)\n"
-                break;
-            }
-            if(story_progression_count == 1 && playerResponse == "Clean"){
-                response_char = "\nThanks! Now do this next task.\n "
-                story_progression_count += 1
-                break;
-            }
-            else if (story_progression_count == 1){
-                response_char = "\nLISTEN TO ME! (Type: Clean)\n"
-                break;
-            }
-            
-        }
+//        while(story_progression_count < 3){
+//            if(story_progression_count == 0 && playerResponse == "Mop Floor"){
+//                response_char = "\nThanks! Now do this next task. Clean\n "
+//                story_progression_count += 1
+//                break;
+//            }
+//            else if(story_progression_count == 0){
+//                response_char = "\nLISTEN TO ME! (Type: Mop Floor)\n"
+//                break;
+//            }
+//            if(story_progression_count == 1 && playerResponse == "Clean"){
+//                response_char = "\nThanks! Now do this next task. (Serve Food)\n "
+//                story_progression_count += 1
+//                break;
+//            }
+//            else if (story_progression_count == 1){
+//                response_char = "\nLISTEN TO ME! (Type: Clean)\n"
+//                break;
+//            }
+//            if(story_progression_count == 2 && playerResponse == "Serve Food"){
+//                response_char = "Cool. GO to forest scnene"
+//                story_progression_count += 1
+//            }
+//            else if (story_progression_count == 2){
+//                response_char = "\nLISTEN TO ME! (Type: Serve Food)\n"
+//                break;
+//            }
+//            
+//            
+//            
+//        }
+//        
+//        while((story_progression_count>5) && (story_progression_count<15)){
+//            
+//        }
         
         return response_char
     }
