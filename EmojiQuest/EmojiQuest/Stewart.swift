@@ -16,11 +16,12 @@ class Stewart: NPC {
         super.init()
     }
     
+    // Response function
     func utilityResponse(playerResponse: String) -> String {
         
         var response_char = "\n"
         
-        while(story_progression_count < 10){
+        while(story_progression_count < 3){
             if(story_progression_count == 0 && playerResponse == "Mop Floor"){
                 response_char = "\nThanks! Now do this next task. Clean\n "
                 story_progression_count += 1
@@ -31,7 +32,7 @@ class Stewart: NPC {
                 break;
             }
             if(story_progression_count == 1 && playerResponse == "Clean"){
-                response_char = "\nThanks! Now do this next task.\n "
+                response_char = "\nThanks! Now do this next task. (Serve Food)\n "
                 story_progression_count += 1
                 break;
             }
@@ -39,7 +40,21 @@ class Stewart: NPC {
                 response_char = "\nLISTEN TO ME! (Type: Clean)\n"
                 break;
             }
+            if(story_progression_count == 2 && playerResponse == "Serve Food"){
+                response_char = "Cool. GO to forest scnene"
+                story_progression_count += 1
+            }
+            else if (story_progression_count == 2){
+                response_char = "\nLISTEN TO ME! (Type: Serve Food)\n"
+                break;
+            }
+
             
+            
+        }
+        
+        while((story_progression_count>5) && (story_progression_count<15)){
+        
         }
         
         return response_char
@@ -47,7 +62,9 @@ class Stewart: NPC {
     
     // not sure if necessary because it will be saved through the singleton instance
     func changeToEndStewert(){
-        story_progression_count = 10
+        story_progression_count = 5
     }
+    
+    
 
 }
