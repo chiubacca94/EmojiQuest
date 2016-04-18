@@ -25,6 +25,7 @@ class Castle{
     var currentNPC : NPC?
     
     init() {
+        // Set the inital NPC to the tutorial charcter
         currentNPC = stewart
     }
     
@@ -41,16 +42,14 @@ class Castle{
         }
     }
     
-    func lookText() {
-        
-    }
-    
+
     func parseText(playerResponse: String, scene: StoryScene) -> String {
         var response: String = ""
         player_speech = playerResponse
         switch (currentNPC) {
         case is Stewart:
             response = "\nStewert: Go mop the floor! (Type 'Mop Floor')\n"
+            stewart.utilityResponse(playerResponse)
             currentNPC = nil
             break
         case is Wizard:
