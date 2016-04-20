@@ -14,4 +14,9 @@ class Wizard: NPC {
     override init() {
         super.init()
     }
+    
+    
+    func respondTo(playerResponse: String) -> String {
+        return "\nSteward Talks\n"
+    }
 }

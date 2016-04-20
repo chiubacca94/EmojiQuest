@@ -21,7 +21,6 @@ class Woodsman: NPC {
     static let sharedInstance = Woodsman()
     
     var currentState : WoodsmanState = WoodsmanState.FoundPlayer
-    //let story = Story.sharedInstance
     
     override init() {
         super.init()

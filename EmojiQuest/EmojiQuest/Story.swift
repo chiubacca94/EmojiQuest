@@ -50,6 +50,10 @@ class Story : StoryManager {
         switch (currentScene) {
         case .TutorialCastleIntroduction:
             return castle.parseText(playerResponse, scene: currentScene)
+        case .TutorialCastleStewardConversation:
+            return castle.parseText(playerResponse, scene: currentScene)
+        case .TutorialCastleHallways:
+            return castle.parseText(playerResponse, scene: currentScene)
         case .CastleFinalBoss:
             return castle.parseText(playerResponse, scene: currentScene)
         default:
@@ -83,7 +87,11 @@ class Story : StoryManager {
         switch (currentScene) {
         case .TutorialCastleIntroduction:
             return castle.introductoryText(currentScene)
+        case .TutorialCastleStewardConversation:
+            return castle.introductoryText(currentScene)
         case .TutorialCastleHallways:
+            return castle.introductoryText(currentScene)
+        case .TutorialKingsSuite:
             return castle.introductoryText(currentScene)
         case .CastleFinalBoss:
             return castle.introductoryText(currentScene)
@@ -91,7 +99,7 @@ class Story : StoryManager {
             return forest.introductoryText()
         case .VillageOutsideCastle:
             return village.introductoryText()
-        }
+    }
  }
 
 

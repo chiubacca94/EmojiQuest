@@ -34,6 +34,8 @@ class Castle {
         switch (scene) {
         case StoryScene.TutorialCastleIntroduction:
             return "You were born into greatness. You are the latest in a long line of heroes who have saved the realm since time immemorial . Their legends are proclaimed in great halls and spoken of in hushed whispers alike. You ponder your great legacy as you continue to clean the feast hall. You still have to:"
+        case StoryScene.TutorialCastleStewardConversation:
+            return "You were born into greatness. You are the latest in a long line of heroes who have saved the realm since time immemorial . Their legends are proclaimed in great halls and spoken of in hushed whispers alike. You ponder your great legacy as you continue to clean the feast hall. You still have to:"
         case StoryScene.TutorialCastleHallways:
             return "'Man there are a lot of steps,' you think to yourself, 'I think this is the room I needed to go to.' You are in front of a door, it is cracked open."
         case StoryScene.TutorialKingsSuite:
@@ -51,11 +53,14 @@ class Castle {
 
         switch (currentNPC) {
         case is Stewart:
-            response = "\nStewert talks\n"
+            response = stewart.respondTo(playerResponse)
+            delegate?.transitionScene()
             currentNPC = nil
             break
         case is Wizard:
-            response = "\nWizard talks\n"
+            response = wizard.respondTo(playerResponse)
+            delegate?.transitionScene()
+            
             break
         case is King:
             response = "\nKing talks\n"
@@ -93,31 +98,12 @@ class Castle {
     
     func utilityResponse(playerResponse: String) -> String {
        
-//        var response_char = ""
+        let response_char = "\ngi\n"
+        // Check for item, look
+        // Utility Response Text
         
-//        switch (currentNPC) {
-//        case is Stewart:
-//            response_char = "\nStewart ur\n"
-//            break
-//        case is Knight:
-//            response_char = "\nKnight ur\n"
-//            break
-//        case is Queen:
-//            response_char = "\nQueen ur\n"
-//            break
-//        case is Wizard:
-//            response_char = "\nWizard ur\n"
-//            break
-//        case is King:
-//            response_char = "\nKing ur\n"
-//            break
-//        default:
-//            return utilityResponse(playerResponse)
-//        }
-
+        // Utility response emoji
         
-        return "TO DO"
-   
+        return response_char
     }
-    
 }
