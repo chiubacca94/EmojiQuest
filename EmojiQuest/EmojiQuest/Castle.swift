@@ -12,9 +12,6 @@ class Castle{
     static let sharedInstance = Castle()
     
 //    let story = Story.sharedInstance
-    
-    var story_progression_count = 0;
-    
     let stewart = Stewart.sharedInstance
     let king = King.sharedInstance
     let queen = Queen.sharedInstance
@@ -56,7 +53,6 @@ class Castle{
             break
         case is King:
             response = "\nKing talks\n"
-            story_progression_count = 10
             break
         default:
             return utilityResponse(playerResponse)
@@ -92,28 +88,6 @@ class Castle{
        
         var response_char = "\n"
         
-        // can still use the story progression idea for 
-        while(story_progression_count < 10){
-            if(story_progression_count == 0 && playerResponse == "Mop Floor"){
-                response_char = "\nThanks! Now do this next task. Clean\n "
-                story_progression_count += 1
-                break;
-            }
-            else if(story_progression_count == 0){
-                response_char = "\nLISTEN TO ME! (Type: Mop Floor)\n"
-                break;
-            }
-            if(story_progression_count == 1 && playerResponse == "Clean"){
-                response_char = "\nThanks! Now do this next task.\n "
-                story_progression_count += 1
-                break;
-            }
-            else if (story_progression_count == 1){
-                response_char = "\nLISTEN TO ME! (Type: Clean)\n"
-                break;
-            }
-            
-        }
         
         return response_char
     }
