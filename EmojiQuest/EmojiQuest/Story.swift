@@ -19,7 +19,7 @@ enum StoryScene : Int {
     case CastleFinalBoss = 7
 }
 
-class Story {
+class Story : StoryManager {
     
     static var sharedInstance = Story()
     
@@ -29,8 +29,8 @@ class Story {
     let village = Village.sharedInstance
     let castle = Castle.sharedInstance
     
-    init() {
-        NSLog("Story init")
+    init(){
+        castle.delegate = self
     }
     
     func endTutorial() {
@@ -38,7 +38,6 @@ class Story {
     }
     
     func replyToText(playerResponse: String) -> String {
-      
         // If in tutorial mode, can use text
         if (isTutorial) {
             return parseText(playerResponse)
@@ -73,8 +72,9 @@ class Story {
         }
     }
     
-    func transitionSceneTo(scene: StoryScene){
-        currentScene = scene
+    func transitionScene(){
+        let newSceneValue = currentScene.rawValue + 1
+        currentScene = StoryScene(rawValue: newSceneValue)!
         // add notification for controller
         NSNotificationCenter.defaultCenter().postNotificationName(StoryUpdateNotificationKey, object: self)
     }
@@ -91,9 +91,6 @@ class Story {
             return forest.introductoryText()
         case .VillageOutsideCastle:
             return village.introductoryText()
-        default:
-            assert(false, "Invalid operation")
-            break;
         }
  }
 
