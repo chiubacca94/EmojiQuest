@@ -28,13 +28,14 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         self.playerInput.delegate = self
         let center = NSNotificationCenter.defaultCenter()
         // New scene -- send notification (clear text and new scene)
-         center.addObserver(self, selector: "newScene", name: StoryUpdateNotificationKey, object: nil)
+        center.addObserver(self, selector: "newScene", name: StoryUpdateNotificationKey, object: nil)
+        center.addObserver(self, selector: "updatedScore", name: ScoreUpdateNotificationKey, object: nil)
         // Have keyboard automatically appear
         playerInput.becomeFirstResponder()
+        gameManager.newGame()
     }
 
     override func viewDidAppear(animated: Bool) {
-        gameManager.newGame()
         scoreLabel.text = String(gameManager.getScore())
         gameText.text = gameManager.newGameText() + "\n" + story.introductoryText() + "\n"
     }
@@ -60,9 +61,14 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         })
     }
     
+    func updatedScore() {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.scoreLabel.text = String(self.gameManager.getScore())
+        })
+    }
+    
     // MARK: TextField Delegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
         gameText.text = gameText.text + "'" + playerInput.text! + "'" + story.replyToText(playerInput.text!)
         playerInput.text = ""
         self.gameText.scrollRangeToVisible(NSMakeRange(-1, -1))
