@@ -15,7 +15,6 @@ protocol StoryManager {
 class Castle {
     static let sharedInstance = Castle()
     
-//    let story = Story.sharedInstance
     let stewart = Stewart.sharedInstance
     let king = King.sharedInstance
     let queen = Queen.sharedInstance
