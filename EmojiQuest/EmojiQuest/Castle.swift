@@ -17,7 +17,6 @@ class Castle{
     let queen = Queen.sharedInstance
     let knight = Knight.sharedInstance
     let wizard = Wizard.sharedInstance
-    var player_speech = ""
     
     var currentNPC : NPC?
     
@@ -28,11 +27,13 @@ class Castle{
     
     func introductoryText(scene: StoryScene) -> String {
         switch (scene) {
-        case StoryScene.CastleTutorial:
-            return "This is your life. These are your choices. You are scrubbing the floors."
-        case StoryScene.CastleTurningPoint:
+        case StoryScene.TutorialCastleIntroduction:
+            return "You were born into greatness. You are the latest in a long line of heroes who have saved the realm since time immemorial . Their legends are proclaimed in great halls and spoken of in hushed whispers alike. You ponder your great legacy as you continue to clean the feast hall. You still have to:"
+        case StoryScene.TutorialCastleHallways:
             return "'Man there are a lot of steps,' you think to yourself, 'I think this is the room I needed to go to.' You are in front of a door, it is cracked open."
-        case StoryScene.CastleEnd:
+        case StoryScene.TutorialKingsSuite:
+            return "What happens in the king suite"
+        case StoryScene.CastleFinalBoss:
             return "After all your effort, you've made it back to the castle."
         default:
             assert(false, "Invalid operation")
@@ -42,10 +43,10 @@ class Castle{
 
     func parseText(playerResponse: String, scene: StoryScene) -> String {
         var response: String = ""
-        player_speech = playerResponse
+
         switch (currentNPC) {
         case is Stewart:
-            response = "\nStewert: Go mop the floor! (Type 'Mop Floor')\n"
+            response = "\nStewert talks\n"
             currentNPC = nil
             break
         case is Wizard:
@@ -86,9 +87,31 @@ class Castle{
     
     func utilityResponse(playerResponse: String) -> String {
        
-        var response_char = "\n"
+//        var response_char = ""
         
+//        switch (currentNPC) {
+//        case is Stewart:
+//            response_char = "\nStewart ur\n"
+//            break
+//        case is Knight:
+//            response_char = "\nKnight ur\n"
+//            break
+//        case is Queen:
+//            response_char = "\nQueen ur\n"
+//            break
+//        case is Wizard:
+//            response_char = "\nWizard ur\n"
+//            break
+//        case is King:
+//            response_char = "\nKing ur\n"
+//            break
+//        default:
+//            return utilityResponse(playerResponse)
+//        }
+
         
-        return response_char
+        return "TO DO"
+   
     }
+    
 }

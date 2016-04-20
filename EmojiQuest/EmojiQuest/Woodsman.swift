@@ -66,7 +66,7 @@ class Woodsman: NPC {
     }
     
     func doTransition(){
-        StoryScene.Village;
+        StoryScene.VillageOutsideCastle;
         
         // true when change and change to
     }

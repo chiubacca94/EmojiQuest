@@ -10,11 +10,13 @@ import Foundation
 
 
 enum StoryScene : Int {
-    case CastleTutorial = 1
-    case CastleTurningPoint = 2
-    case Forest = 3
-    case Village = 4
-    case CastleEnd = 5
+    case TutorialCastleIntroduction = 1
+    case TutorialCastleStewardConversation = 2
+    case TutorialCastleHallways = 3
+    case TutorialKingsSuite = 4
+    case WoodsOutsideKingdom = 5
+    case VillageOutsideCastle = 6
+    case CastleFinalBoss = 7
 }
 
 class Story {
@@ -22,7 +24,7 @@ class Story {
     static var sharedInstance = Story()
     
     private var isTutorial = true
-    private var currentScene : StoryScene = .CastleTutorial
+    private var currentScene : StoryScene = .TutorialCastleIntroduction
     let forest = Forest.sharedInstance
     let village = Village.sharedInstance
     let castle = Castle.sharedInstance
@@ -47,9 +49,9 @@ class Story {
     
     func parseText(playerResponse: String) -> String {
         switch (currentScene) {
-        case .CastleTutorial:
+        case .TutorialCastleIntroduction:
             return castle.parseText(playerResponse, scene: currentScene)
-        case .CastleTurningPoint:
+        case .CastleFinalBoss:
             return castle.parseText(playerResponse, scene: currentScene)
         default:
             assert(false, "Invalid Actions")
@@ -59,11 +61,11 @@ class Story {
     
     func parseEmoji(playerResponse: String) -> String {
         switch (currentScene) {
-        case .Forest:
+        case .WoodsOutsideKingdom:
             return forest.parseEmoji(playerResponse)
-        case .Village:
+        case .VillageOutsideCastle:
             return village.parseEmoji(playerResponse)
-        case .CastleEnd:
+        case .CastleFinalBoss:
             return castle.parseEmoji(playerResponse)
         default:
             assert(false, "Invalid Actions")
@@ -79,15 +81,15 @@ class Story {
     
     func introductoryText() -> String {
         switch (currentScene) {
-        case .CastleTutorial:
+        case .TutorialCastleIntroduction:
             return castle.introductoryText(currentScene)
-        case .CastleTurningPoint:
+        case .TutorialCastleHallways:
             return castle.introductoryText(currentScene)
-        case .CastleEnd:
+        case .CastleFinalBoss:
             return castle.introductoryText(currentScene)
-        case .Forest:
+        case .WoodsOutsideKingdom:
             return forest.introductoryText()
-        case .Village:
+        case .VillageOutsideCastle:
             return village.introductoryText()
         default:
             assert(false, "Invalid operation")
