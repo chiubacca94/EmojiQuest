@@ -44,8 +44,8 @@ class Castle {
         case StoryScene.TutorialCastleIntroduction:
             return "You still have to WASH the tables, SCRUB the floors, and DUST the trophies. What do you do?"
         case StoryScene.TutorialCastleStewardConversation:
-            currentNPC = steward
-            return "The steward is your boss at the castle. He’s got a self important job title that basically means “head janitor” to cover up for his crippling lack of self-worth. Ignore him when he makes fun of you. He’s just jealous of your fashionable capes. \n\n “Welcome hero! We’ve need of your heroic might in a great quest. Peril approaches! You’re our only hope!” \n\n Your chest swells with pride. You knew this day would come. The steward seems to be in an especially good mood, you could probably ask him anything about the KINGDOM and he might even answer! Or you could just ask for details about your QUEST."
+            currentNPC = stewart
+            return "\nThe steward is your boss at the castle. He’s got a self important job title that basically means “head janitor” to cover up for his crippling lack of self-worth. Ignore him when he makes fun of you. He’s just jealous of your fashionable capes. \n\n “Welcome hero! We’ve need of your heroic might in a great quest. Peril approaches! You’re our only hope!” \n\n Your chest swells with pride. You knew this day would come. The steward seems to be in an especially good mood, you could probably ask him anything about the KINGDOM and he might even answer! Or you could just ask for details about your QUEST.\n"
         case StoryScene.TutorialCastleHallways:
             return "'Man there are a lot of steps,' you think to yourself, 'I think this is the room I needed to go to.' You are in front of a door, it is cracked open."
         case StoryScene.TutorialKingsSuite:
@@ -63,7 +63,7 @@ class Castle {
 
         switch (currentNPC) {
         case is Stewart:
-            response = steward.respondTo(playerResponse)
+            response = stewart.respondTo(playerResponse)
             break
         case is Wizard:
             response = wizard.respondTo(playerResponse)
@@ -83,7 +83,7 @@ class Castle {
         var response: String = ""
         switch (currentNPC) {
         case is Stewart:
-            response = steward.respondTo(playerResponse)
+            response = stewart.respondTo(playerResponse)
             delegate?.transitionScene()
             break
         case is Knight:
