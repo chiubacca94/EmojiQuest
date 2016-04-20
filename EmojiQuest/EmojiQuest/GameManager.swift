@@ -12,7 +12,6 @@ class GameManager {
    
     static let sharedInstance = GameManager()
     
-  //  let story = Story.sharedInstance
     let player = Player.sharedInstance
     
     var score = 0
@@ -20,6 +19,7 @@ class GameManager {
     
     func incrementScore(amount: Int) {
         score += amount
+        NSNotificationCenter.defaultCenter().postNotificationName(ScoreUpdateNotificationKey, object: self)
     }
     
     func getScore() -> Int {
@@ -32,7 +32,7 @@ class GameManager {
     }
     
     func newGameText() -> String {
-        return "\nWake up, ya doofus! Ya got work to do!"
+        return "\nYou were born into greatness. You are the latest in a long line of heroes who have saved the realm since time immemorial . Their legends are proclaimed in great halls and spoken of in hushed whispers alike. You ponder your great legacy as you continue to clean the feast hall."
     }
     
     func gameOver() {

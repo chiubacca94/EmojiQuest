@@ -69,7 +69,7 @@ class Story : StoryManager {
         case .VillageOutsideCastle:
             return village.parseEmoji(playerResponse)
         case .CastleFinalBoss:
-            return castle.parseEmoji(playerResponse)
+            return castle.parseEmoji(playerResponse, scene: currentScene)
         default:
             assert(false, "Invalid Actions")
             break

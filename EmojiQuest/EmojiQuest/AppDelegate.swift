@@ -9,6 +9,7 @@
 import UIKit
 
 let StoryUpdateNotificationKey = "com.RedSalsaDressStudios.storyUpdate"
+let ScoreUpdateNotificationKey = "com.RedSalsaDressStudios.scoreUpdate"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
