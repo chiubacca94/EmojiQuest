@@ -92,6 +92,7 @@ class Castle{
        
         var response_char = "\n"
         
+        // can still use the story progression idea for 
         while(story_progression_count < 10){
             if(story_progression_count == 0 && playerResponse == "Mop Floor"){
                 response_char = "\nThanks! Now do this next task. Clean\n "
