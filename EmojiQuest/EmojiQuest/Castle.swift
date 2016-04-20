@@ -49,7 +49,6 @@ class Castle{
         switch (currentNPC) {
         case is Stewart:
             response = "\nStewert: Go mop the floor! (Type 'Mop Floor')\n"
-            stewart.utilityResponse(playerResponse)
             currentNPC = nil
             break
         case is Wizard:
