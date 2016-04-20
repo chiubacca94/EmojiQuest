@@ -28,7 +28,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         self.playerInput.delegate = self
         let center = NSNotificationCenter.defaultCenter()
         // New scene -- send notification (clear text and new scene)
-         center.addObserver(self, selector: "newScene:", name: StoryUpdateNotificationKey, object: nil)
+         center.addObserver(self, selector: "newScene", name: StoryUpdateNotificationKey, object: nil)
         // Have keyboard automatically appear
         playerInput.becomeFirstResponder()
     }
@@ -54,7 +54,10 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     }
     
     func newScene() {
-        gameText.text = story.introductoryText()
+        dispatch_async(dispatch_get_main_queue(), {
+            self.gameText.text = " "
+            self.gameText.text = self.story.introductoryText()
+        })
     }
     
     // MARK: TextField Delegate

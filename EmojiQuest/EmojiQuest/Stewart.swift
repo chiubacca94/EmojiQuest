@@ -17,5 +17,7 @@ class Stewart: NPC {
     }
     
    
-
+    func respondTo(playerResponse: String) -> String {
+        return "\nSteward Talks\n"
+    }
 }

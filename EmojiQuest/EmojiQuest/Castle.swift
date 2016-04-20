@@ -8,7 +8,11 @@
 
 import Foundation
 
-class Castle{
+protocol StoryManager {
+    func transitionScene()
+}
+
+class Castle {
     static let sharedInstance = Castle()
     
 //    let story = Story.sharedInstance
@@ -20,6 +24,7 @@ class Castle{
     var player_speech = ""
     
     var currentNPC : NPC?
+    var delegate : StoryManager?
     
     init() {
         // Set the inital NPC to the tutorial charcter
@@ -45,7 +50,8 @@ class Castle{
         player_speech = playerResponse
         switch (currentNPC) {
         case is Stewart:
-            response = "\nStewert: Go mop the floor! (Type 'Mop Floor')\n"
+            response = stewart.respondTo(playerResponse)
+            delegate?.transitionScene()
             currentNPC = nil
             break
         case is Wizard:
@@ -64,7 +70,8 @@ class Castle{
         var response: String = ""
         switch (currentNPC) {
         case is Stewart:
-            response = "\nStewart talks\n"
+            response = stewart.respondTo(playerResponse)
+            delegate?.transitionScene()
             break
         case is Knight:
             response = "\nKnight talks\n"
@@ -86,7 +93,7 @@ class Castle{
     
     func utilityResponse(playerResponse: String) -> String {
        
-        var response_char = "\n"
+        let response_char = "\n"
         
         
         return response_char
