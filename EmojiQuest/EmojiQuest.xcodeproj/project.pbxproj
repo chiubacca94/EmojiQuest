@@ -17,7 +17,7 @@
 		E6791D491CBC639400F4A4E3 /* Forest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D481CBC639400F4A4E3 /* Forest.swift */; };
 		E6791D4B1CBC63A400F4A4E3 /* Castle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D4A1CBC63A400F4A4E3 /* Castle.swift */; };
 		E6791D4D1CBC63C600F4A4E3 /* Village.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D4C1CBC63C600F4A4E3 /* Village.swift */; };
-		E6791D511CBC71A200F4A4E3 /* Stewart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D501CBC71A200F4A4E3 /* Stewart.swift */; };
+		E6791D511CBC71A200F4A4E3 /* Steward.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D501CBC71A200F4A4E3 /* Steward.swift */; };
 		E6791D531CBC71B800F4A4E3 /* King.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D521CBC71B800F4A4E3 /* King.swift */; };
 		E6791D551CBC71C000F4A4E3 /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D541CBC71C000F4A4E3 /* Queen.swift */; };
 		E6791D571CBC71CA00F4A4E3 /* Woodsman.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6791D561CBC71CA00F4A4E3 /* Woodsman.swift */; };
@@ -59,7 +59,7 @@
 		E6791D481CBC639400F4A4E3 /* Forest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forest.swift; sourceTree = "<group>"; };
 		E6791D4A1CBC63A400F4A4E3 /* Castle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Castle.swift; sourceTree = "<group>"; };
 		E6791D4C1CBC63C600F4A4E3 /* Village.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Village.swift; sourceTree = "<group>"; };
-		E6791D501CBC71A200F4A4E3 /* Stewart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stewart.swift; sourceTree = "<group>"; };
+		E6791D501CBC71A200F4A4E3 /* Steward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Steward.swift; sourceTree = "<group>"; };
 		E6791D521CBC71B800F4A4E3 /* King.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = King.swift; sourceTree = "<group>"; };
 		E6791D541CBC71C000F4A4E3 /* Queen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
 		E6791D561CBC71CA00F4A4E3 /* Woodsman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Woodsman.swift; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 		E6791D4F1CBC718800F4A4E3 /* NPCs */ = {
 			isa = PBXGroup;
 			children = (
-				E6791D501CBC71A200F4A4E3 /* Stewart.swift */,
+				E6791D501CBC71A200F4A4E3 /* Steward.swift */,
 				E6791D521CBC71B800F4A4E3 /* King.swift */,
 				E6791D541CBC71C000F4A4E3 /* Queen.swift */,
 				E6791D561CBC71CA00F4A4E3 /* Woodsman.swift */,
@@ -273,7 +273,7 @@
 				E664F9571C8E1871007CF915 /* SettingsViewController.swift in Sources */,
 				E6791D4B1CBC63A400F4A4E3 /* Castle.swift in Sources */,
 				E664F96E1C8E2151007CF915 /* InGameMenuViewController.swift in Sources */,
-				E6791D511CBC71A200F4A4E3 /* Stewart.swift in Sources */,
+				E6791D511CBC71A200F4A4E3 /* Steward.swift in Sources */,
 				E664F96C1C8E2118007CF915 /* Story.swift in Sources */,
 				E6791D5F1CBC731400F4A4E3 /* Merchant.swift in Sources */,
 			);

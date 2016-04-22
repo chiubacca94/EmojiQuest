@@ -10,7 +10,7 @@ import Foundation
 
 enum WoodsmanState : String {
     case FoundPlayer = "foundPlayer"
-    case Confused = "confused"
+    case PlayerUp = "playerUp"
     case Willing = "willing"
 }
 
@@ -33,27 +33,31 @@ class Woodsman: NPC {
         switch (currentState) {
         case .FoundPlayer:
             return parseResponseIfFound(playerResponse)
-        case .Confused:
-            return parseResponseIfConfused(playerResponse)
+        case .PlayerUp:
+            return parseResponseIfPlayerUp(playerResponse)
         case .Willing:
             return parseResponseIfWilling(playerResponse)
         }
     }
     
     func parseResponseIfFound(playerResponse: String) -> String {
+        let continuingText = "You look around and get your bearings. You’re in a thickly wooded forest, characteristic of the King’s Woods, just a few miles away from the castle. Well, this could’ve been a lot worse, you reason. You must get back to the castle to depose the evil Wizard and regain your voice as quickly as possible! But wait, the Woodsman seems to be trying to communicate with you, with a series of grunts and gestures. Mysterious. \n\n \"(emojis asking if you want to eat, rest, go back to camp)\" What do you respond?\n"
+        
         if positiveEmoji.contains(playerResponse) {
-            return ""
+            currentState = .PlayerUp
+            return "\nThe woodsman nods ...happily? And then he helps you up.\n\n" + continuingText
         } else if negativeEmoji.contains(playerResponse) {
-            return ""
+            currentState = .PlayerUp
+            return "\nThe woodsman frown deepens, slightly 😒. He glumly helps you to your feet.\n\n" + continuingText
         } else if romanticEmoji.contains(playerResponse) {
             gameManager.gameOver("The woodsman blushes, and then whacks you over the head. He must not appreciate such forward advances. Try being classier next time.")
             return ""
         } else {
-            return "The Woodsman just stares at you. I don't think that worked. Might want to try again."
+            return "\nThe Woodsman just stares at you. I don't think that worked. Might want to try again.\n"
         }
     }
     
-    func parseResponseIfConfused(playerResponse: String) -> String {
+    func parseResponseIfPlayerUp(playerResponse: String) -> String {
         if playerResponse.containsString("🌲") {
             currentState = .Willing
             return "Hurumph (He seems to like what you are doing)"

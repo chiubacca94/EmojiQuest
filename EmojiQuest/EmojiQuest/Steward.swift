@@ -8,17 +8,15 @@
 
 import Foundation
 
-// make a library for speech
-
 enum StewartState : String {
     case FoundPlayer = "foundPlayer"
     case Confused = "confused"
     case Willing = "willing"
 }
 
-class Stewart: NPC {
+class Steward: NPC {
  
-    static let sharedInstance = Stewart()
+    static let sharedInstance = Steward()
     
     var currentState : StewartState = StewartState.FoundPlayer
     
@@ -27,22 +25,14 @@ class Stewart: NPC {
     }
     
     func respondTo(playerResponse: String) -> String {
-        switch (currentState) {
-        case .FoundPlayer:
-            return parseResponseIfFound(playerResponse)
-        case .Confused:
-            return parseResponseIfConfused(playerResponse)
-        case .Willing:
-            return parseResponseIfWilling(playerResponse)
-        }
+       return parseResponseInfo(playerResponse)
     }
     
-    func parseResponseIfFound(playerResponse: String) -> String {
+    func parseResponseInfo(playerResponse: String) -> String {
         
         let response = playerResponse.lowercaseString
         
         switch(response){
-            
         case "kingdom":
             currentState = .FoundPlayer
             return "\nThe Kingdom is flourishing under the reign of our benevolent King and Queen. Truth be told though, neither of them really do much governing. It’s largely due to the efforts of the court Wizard that the economy has made such a turn around.\n"
@@ -59,31 +49,5 @@ class Stewart: NPC {
         default:
             return "\nYou just wasted my time, didn't I give you a QUEST?\n"
         }
-
     }
-    
-    func parseResponseIfConfused(playerResponse: String) -> String {
-        if playerResponse.containsString("🌲") {
-            currentState = .Willing
-            return "\nHurumph (He seems to like what you are doing)\n"
-        } else {
-            return "\nThe Woodsman is staring at you\n"
-        }
-    }
-    
-    func parseResponseIfWilling(playerResponse: String) -> String {
-        if playerResponse.containsString("🌲") {
-            //          story.transitionSceneTo(StoryScene.Village)
-            return "\nThe Woodsman grabs your hand and starts leading you away.\n"
-        } else {
-            return "\nThe Woodsman is staring at you\n"
-        }
-    }
-    
-    func doTransition(){
-        StoryScene.VillageOutsideCastle;
-        
-        // true when change and change to
-    }
-    
 }
