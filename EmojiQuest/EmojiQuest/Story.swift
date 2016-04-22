@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 enum StoryScene : Int {
     case TutorialCastleIntroduction = 1
     case TutorialCastleStewardConversation = 2
