@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Forest {
+class Forest : StoryManager {
     static let sharedInstance = Forest()
     
     let woodsman = Woodsman.sharedInstance
@@ -17,7 +17,11 @@ class Forest {
     
     init() {
         currentNPC = woodsman
-        woodsman.delegate = delegate
+        woodsman.delegate = self
+    }
+    
+    func transitionScene() {
+        delegate?.transitionScene()
     }
     
     func introductoryText() -> String {

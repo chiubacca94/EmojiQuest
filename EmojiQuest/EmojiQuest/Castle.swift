@@ -8,11 +8,7 @@
 
 import Foundation
 
-protocol StoryManager {
-    func transitionScene()
-}
-
-class Castle {
+class Castle : StoryManager {
     static let sharedInstance = Castle()
     
     let steward = Steward.sharedInstance
@@ -37,8 +33,12 @@ class Castle {
     init() {
         // Set the inital NPC to the tutorial charcter
         currentNPC = nil
-        steward.delegate = delegate
-        wizard.delegate = delegate
+        steward.delegate = self
+        wizard.delegate = self
+    }
+    
+    func transitionScene() {
+        delegate?.transitionScene()
     }
     
     func introductoryText(scene: StoryScene) -> String {
