@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum StewartState : String {
+enum StewardState : String {
     case GivingIntroInfo = "introInfo"
 }
 
@@ -16,7 +16,7 @@ class Steward: NPC {
  
     static let sharedInstance = Steward()
     
-    var currentState : StewartState = StewartState.GivingIntroInfo
+    var currentState : StewardState = StewardState.GivingIntroInfo
     
     override init() {
         super.init()
@@ -46,9 +46,11 @@ class Steward: NPC {
             return "\nOh yes. Your quest, O mighty hero, is to… clean the King’s Suite because the usual guy, er, brave knight, has fallen ill-- er, been injured in the line of duty. Dear Lord, talking like this is tiring. How do you manage to keep this up? I’m bored now. Please LEAVE.\n"
         case "leave":
             delegate?.transitionScene()
-            return ""
+            break
         default:
             return "\nYou just wasted my time, didn't I give you a QUEST?\n"
         }
+        
+        return ""
     }
 }

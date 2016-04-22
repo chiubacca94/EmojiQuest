@@ -18,6 +18,10 @@ enum StoryScene : Int {
     case CastleFinalBoss = 7
 }
 
+protocol StoryManager {
+    func transitionScene()
+}
+
 class Story : StoryManager {
     
     static var sharedInstance = Story()
