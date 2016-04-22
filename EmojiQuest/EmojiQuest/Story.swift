@@ -28,9 +28,11 @@ class Story : StoryManager {
     let forest = Forest.sharedInstance
     let village = Village.sharedInstance
     let castle = Castle.sharedInstance
+    let gameManager = GameManager.sharedInstance
     
     init(){
         castle.delegate = self
+        forest.delegate = self
     }
     
     func endTutorial() {
@@ -77,13 +79,19 @@ class Story : StoryManager {
     }
     
     func transitionScene(){
-        let newSceneValue = currentScene.rawValue + 1
-        currentScene = StoryScene(rawValue: newSceneValue)!
+        if (!gameManager.gameLost) {
+            let newSceneValue = currentScene.rawValue + 1
+            currentScene = StoryScene(rawValue: newSceneValue)!
+        }
         // add notification for controller
         NSNotificationCenter.defaultCenter().postNotificationName(StoryUpdateNotificationKey, object: self)
     }
     
     func introductoryText() -> String {
+        if (gameManager.gameLost) {
+            return gameManager.gameOverReason! + "\n\nEnter Text to return to Main Menu."
+        }
+        
         switch (currentScene) {
         case .TutorialCastleIntroduction:
             return castle.introductoryText(currentScene)

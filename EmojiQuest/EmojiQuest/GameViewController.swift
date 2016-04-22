@@ -69,6 +69,10 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     
     // MARK: TextField Delegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if (gameManager.gameLost) {
+            delegate?.dismissView()
+        }
+        
         gameText.text = gameText.text + "'" + playerInput.text! + "'" + story.replyToText(playerInput.text!)
         playerInput.text = ""
         self.gameText.scrollRangeToVisible(NSMakeRange(-1, -1))
@@ -87,4 +91,18 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         }
     }
     
+    @IBAction func infoButtonTouch(sender: AnyObject) {
+        let alertVC = UIAlertController(title: "Feature Currently Not Implemented", message: "This would normally lead to the ability to save the game. However, due to prototype status, this feature has not been implemented.", preferredStyle: .Alert)
+        
+        let okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+        
+        alertVC.addAction(okAction)
+        alertVC.modalPresentationStyle = .FullScreen
+        
+        if let popoverController = alertVC.popoverPresentationController {
+            popoverController.sourceView = view
+            popoverController.sourceRect = view.bounds
+        }
+        self.presentViewController(alertVC, animated: true, completion: nil)
+    }
 }

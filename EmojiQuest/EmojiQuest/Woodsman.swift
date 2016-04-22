@@ -8,8 +8,6 @@
 
 import Foundation
 
-// make a library for speech
-
 enum WoodsmanState : String {
     case FoundPlayer = "foundPlayer"
     case Confused = "confused"
@@ -19,8 +17,13 @@ enum WoodsmanState : String {
 class Woodsman: NPC {
     
     static let sharedInstance = Woodsman()
+    let gameManager = GameManager.sharedInstance
     
     var currentState : WoodsmanState = WoodsmanState.FoundPlayer
+    
+    let positiveEmoji = ["😀", "😁", "☺️","😂","😃","😄","😅","😆","😊","😋", "😎","😹","😸", "😺", "🙆", "🙋", "🙌", "👍", "👌", "✋", "✌️", "🙏", "👆", "✊", "😇"]
+    let negativeEmoji = ["😐", "😑", "😓", "😔", "😕", "😖",]
+    let romanticEmoji = ["😉", "💋", "😍", "❤️", "💌", "👄", "😘", "😻", "😗", "😙", "😚", "😽"]
     
     override init() {
         super.init()
@@ -38,11 +41,15 @@ class Woodsman: NPC {
     }
     
     func parseResponseIfFound(playerResponse: String) -> String {
-        if playerResponse.containsString("🌲") {
-            currentState = .Confused
-            return "Hurumph (He seems to like what you are doing)"
+        if positiveEmoji.contains(playerResponse) {
+            return ""
+        } else if negativeEmoji.contains(playerResponse) {
+            return ""
+        } else if romanticEmoji.contains(playerResponse) {
+            gameManager.gameOver("The woodsman blushes, and then whacks you over the head. He must not appreciate such forward advances. Try being classier next time.")
+            return ""
         } else {
-            return "The Woodsman is staring at you"
+            return "The Woodsman just stares at you. I don't think that worked. Might want to try again."
         }
     }
     
@@ -57,16 +64,9 @@ class Woodsman: NPC {
     
     func parseResponseIfWilling(playerResponse: String) -> String {
         if playerResponse.containsString("🌲") {
-  //          story.transitionSceneTo(StoryScene.Village)
             return "The Woodsman grabs your hand and starts leading you away."
         } else {
             return "The Woodsman is staring at you"
         }
-    }
-    
-    func doTransition(){
-        StoryScene.VillageOutsideCastle;
-        
-        // true when change and change to
     }
 }

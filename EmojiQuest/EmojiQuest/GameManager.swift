@@ -16,6 +16,8 @@ class GameManager {
     
     var score = 0
     var previousGameExists = false
+    var gameLost = false
+    var gameOverReason : String?
     
     func incrementScore(amount: Int) {
         score += amount
@@ -35,7 +37,8 @@ class GameManager {
         return "\nYou were born into greatness. You are the latest in a long line of heroes who have saved the realm since time immemorial . Their legends are proclaimed in great halls and spoken of in hushed whispers alike. You ponder your great legacy as you continue to clean the feast hall."
     }
     
-    func gameOver() {
-        // TODO
+    func gameOver(gameOverText: String) {
+        gameLost = true
+        gameOverReason = gameOverText
     }
 }

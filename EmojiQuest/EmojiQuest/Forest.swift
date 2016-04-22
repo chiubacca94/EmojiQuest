@@ -13,9 +13,11 @@ class Forest {
     
     let woodsman = Woodsman.sharedInstance
     var currentNPC : NPC?
+    var delegate : StoryManager?
     
     init() {
         currentNPC = woodsman
+        woodsman.delegate = delegate
     }
     
     func introductoryText() -> String {
@@ -23,7 +25,10 @@ class Forest {
     }
     
     func parseEmoji(playerResponse: String) -> String {
-        // Check if text
-        return woodsman.respondTo(playerResponse)
+        if playerResponse.containsOnlyEmojis {
+            return woodsman.respondTo(playerResponse)
+        } else {
+            return "You can’t speak 😲 ‼️\nThere must be another way to convey your EMOTIONS 😕."
+        }
     }
 }

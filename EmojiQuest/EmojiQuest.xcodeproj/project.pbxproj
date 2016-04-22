@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E65EB42B1CCA6A5E00825E01 /* String+Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65EB42A1CCA6A5E00825E01 /* String+Emojis.swift */; };
 		E664F9511C8E14D1007CF915 /* Kingthings_Petrock.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E664F9501C8E14D1007CF915 /* Kingthings_Petrock.ttf */; };
 		E664F9551C8E17A4007CF915 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E664F9541C8E17A4007CF915 /* GameViewController.swift */; };
 		E664F9571C8E1871007CF915 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E664F9561C8E1871007CF915 /* SettingsViewController.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E65EB42A1CCA6A5E00825E01 /* String+Emojis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Emojis.swift"; sourceTree = "<group>"; };
 		E664F9501C8E14D1007CF915 /* Kingthings_Petrock.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kingthings_Petrock.ttf; sourceTree = "<group>"; };
 		E664F9541C8E17A4007CF915 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		E664F9561C8E1871007CF915 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				F08843531C87A99800F25958 /* Assets.xcassets */,
 				F08843551C87A99800F25958 /* LaunchScreen.storyboard */,
 				F08843581C87A99800F25958 /* Info.plist */,
+				E65EB42A1CCA6A5E00825E01 /* String+Emojis.swift */,
 				E664F9681C8E20F9007CF915 /* Models */,
 				E664F9531C8E16AE007CF915 /* Controllers */,
 				E664F9521C8E16A0007CF915 /* Assets */,
@@ -258,6 +261,7 @@
 				F088434F1C87A99800F25958 /* ViewController.swift in Sources */,
 				F06B01AF1CBC1CC9001C7A82 /* GameManager.swift in Sources */,
 				E664F9551C8E17A4007CF915 /* GameViewController.swift in Sources */,
+				E65EB42B1CCA6A5E00825E01 /* String+Emojis.swift in Sources */,
 				E6791D5D1CBC720800F4A4E3 /* NPC.swift in Sources */,
 				F088434D1C87A99800F25958 /* AppDelegate.swift in Sources */,
 				E664F96A1C8E210A007CF915 /* Player.swift in Sources */,
