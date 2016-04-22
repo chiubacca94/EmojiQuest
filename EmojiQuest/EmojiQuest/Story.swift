@@ -38,8 +38,12 @@ class Story : StoryManager {
         forest.delegate = self
     }
     
+    func newGame() {
+        isTutorial = true
+    }
+    
     func endTutorial() {
-        isTutorial = false // Reset tutorial in GameManager
+        isTutorial = false 
     }
     
     func replyToText(playerResponse: String) -> String {
@@ -52,6 +56,10 @@ class Story : StoryManager {
     }
     
     func parseText(playerResponse: String) -> String {
+        if playerResponse.containsAnEmoji {
+            return "\nWhat are you doing with your face?? Stop that. Use your words.\n"
+        }
+        
         switch (currentScene) {
         case .TutorialCastleIntroduction:
             return castle.parseText(playerResponse, scene: currentScene)

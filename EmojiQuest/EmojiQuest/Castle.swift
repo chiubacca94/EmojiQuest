@@ -63,21 +63,29 @@ class Castle : StoryManager {
 
     func parseText(playerResponse: String, scene: StoryScene) -> String {
         var response: String = ""
-
+        
+        // Clean up and unify player response
+        let text = playerResponse.lowercaseString.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        )
+        
+        // check for utility phrases
+        if text == "look" {
+            return lookTextFor(scene)
+        }
+        
         switch (currentNPC) {
         case is Steward:
             response = steward.respondTo(playerResponse)
             break
         case is Wizard:
             response = wizard.respondTo(playerResponse)
-            delegate?.transitionScene()
-            
             break
         case is King:
             response = "\nKing talks\n"
             break
         default:
-            return utilityResponseText(playerResponse, scene: scene)
+            return noNPCResponseText(playerResponse, scene: scene)
         }
         return response
     }
@@ -101,39 +109,45 @@ class Castle : StoryManager {
             response = "\nKing talks\n"
             break
         default:
-            return utilityResponseEmoji(playerResponse, scene: scene)
+            return noNPCResponseEmoji(playerResponse, scene: scene)
         }
         return response
     }
     
-    func utilityResponseText(playerResponse: String, scene: StoryScene) -> String {
-        if (scene == .TutorialCastleIntroduction){
+    func noNPCResponseText(playerResponse: String, scene: StoryScene) -> String {
+        switch (scene) {
+        case .TutorialCastleIntroduction:
             return parseHallwayText(playerResponse)
+        default:
+            return "\nNot implemented yet.\n"
         }
-        return "bluh\n"
     }
     
-    func utilityResponseEmoji(playerResponse: String, scene: StoryScene) -> String {
-        
-        let response_char = "\ngi\n"
-        // Check for item, look
-        // Utility Response Text
-        
-        // Utility response emoji
-        
-        return response_char
+    func noNPCResponseEmoji(playerResponse: String, scene: StoryScene) -> String {
+        return "\nNot implemented yet.\n"
+    }
+    
+    func lookTextFor(scene: StoryScene) -> String {
+        switch(scene){
+        case .TutorialCastleIntroduction:
+            return "\nYou look around the great hall of the castle and you notice its enormity. Trophies from great hunts hang on the walls and the floors are lined with tables where the King can entertain his guests.\n"
+        case .TutorialCastleStewardConversation:
+            return "\nThe steward’s office is a small room near the great hall. The walls are bare except for a small window on the far wall that only lets in a little bit of light.\n"
+        case .TutorialCastleHallways:
+            return "\nAll of these hallways look the same. It’s a wonder that more people don’t get lost walking in here.\n"
+        case .TutorialKingsSuite:
+            return "\nThe main room of the suite is a large open room adorned with the King’s possessions. On the far wall is PORTRAIT of the Kings and the Queen, on the wall to the left hangs the King’s GREATSWORD, and there is a CRACKED DOOR to the right from which you can hear voices.\n"
+        default:
+            return "\nsomething went really wrong... you shouldn't be here\n"
+        }
     }
     
     func parseHallwayText(playerResponse: String) -> String {
-        let text = playerResponse.lowercaseString.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        )
-        
         if (didDust && didScrub && didWash) {
             delegate?.transitionScene()
         }
         
-        switch (text) {
+        switch (playerResponse) {
             case "dust":
             if (didDust) {
                 return "\nThere's something to be said about diligence, but this is just pushing it.\n"
@@ -141,7 +155,7 @@ class Castle : StoryManager {
                 introductionMonologueIndex++
                 didDust = true
                 gameManager.incrementScore(10)
-                return "\nNumerous trophies decorate the walls from age-old victories against foreign armies and evil beasts, hard won by heroes of old. Now dust mites invade, seeking to sully the trophies’ luster. Back, foul bits of entropy!\n" + introductionMonologue[introductionMonologueIndex] + "\n"
+                return "\nNumerous trophies decorate the walls from age-old victories against foreign armies and evil beasts, hard won by heroes of old. Now dust mites invade, seeking to sully the trophies’ luster. Back, foul bits of entropy!\n\n" + introductionMonologue[introductionMonologueIndex] + "\n"
             }
             case "wash":
             if (didWash) {
