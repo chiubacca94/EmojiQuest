@@ -37,6 +37,8 @@ class Castle {
     init() {
         // Set the inital NPC to the tutorial charcter
         currentNPC = nil
+        steward.delegate = delegate
+        wizard.delegate = delegate
     }
     
     func introductoryText(scene: StoryScene) -> String {

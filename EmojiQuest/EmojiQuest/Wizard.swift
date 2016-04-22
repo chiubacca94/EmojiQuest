@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum WizardState : String {
+    case notSeenPlayer = "notSeenPlayer"
+    case spottedPlayer = "seenPlayer"
+}
+
 class Wizard: NPC {
     static let sharedInstance = Wizard()
     
@@ -15,8 +20,7 @@ class Wizard: NPC {
         super.init()
     }
     
-    
     func respondTo(playerResponse: String) -> String {
-        return "\nSteward Talks\n"
+        return "\nWizard Talks\n"
     }
 }
