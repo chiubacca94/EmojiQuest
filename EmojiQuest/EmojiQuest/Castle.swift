@@ -55,6 +55,7 @@ class Castle : StoryManager {
             currentNPC = nil
             return "\nYou’re in the hallway outside of the STEWARD’S OFFICE. The hallway extends NORTH and SOUTH. The Feast Hall lies to the SOUTH. What do you do?\n"
         case StoryScene.TutorialKingsSuite:
+            currentNPC = nil
             return "\nYou arrive at the King’s suite.\n"
         case StoryScene.CastleFinalBoss:
             return "After all your effort, you've made it back to the castle."
@@ -73,7 +74,7 @@ class Castle : StoryManager {
         )
         
         // Check for utility phrases
-        if text == "look" {
+        if text.containsString("look") {
             return lookTextFor(scene)
         }
         
@@ -214,7 +215,7 @@ class Castle : StoryManager {
                     return "\nYou head west, going down a twisting series of hallways. Suddenly, you come around a corner and find yourself in the barracks! “Oh god, not here!” You think to yourself, and flee. Your socks wrinkle just remembering what happened last time you went in there. Not the socks! You head back\n"
                 case "east":
                     wentEast = true
-                    return "\n\n"
+                    return "\nThe hallway becomes gradually richer and better lit. You find yourself at a dead end, with three doors in front of you. There’s one to your LEFT, one to the RIGHT, and a BIG, heavily decorated one straight ahead. I wonder which is one it is?\n"
                 default:
                     return "\nWhat... are you doing? How about we try something else.\n"
                 }

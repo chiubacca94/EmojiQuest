@@ -40,6 +40,6 @@ class GameManager {
     
     func gameOver(gameOverText: String) {
         gameLost = true
-        gameOverReason = gameOverText
+        gameOverReason = gameOverText + "\n\nGAME OVER."
     }
 }
