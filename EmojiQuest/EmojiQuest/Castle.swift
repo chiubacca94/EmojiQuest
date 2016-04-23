@@ -25,6 +25,7 @@ class Castle : StoryManager {
     var wentNorth = false
     var wentEast = false
     var selectedBig = false
+    var approachedCrackedDoor = false
     
     var currentNPC : NPC?
     var delegate : StoryManager?
@@ -126,6 +127,8 @@ class Castle : StoryManager {
             return parseCastleIntroText(playerResponse)
         case .TutorialCastleHallways:
             return parseHallwayText(playerResponse)
+        case .TutorialKingsSuite:
+            return parseKingsSuiteText(playerResponse)
         default:
             return "\nNot implemented yet.\n"
         }
@@ -232,6 +235,32 @@ class Castle : StoryManager {
                 default:
                     return "\nThat doesn't seem really helpful at this point.\n"
             }
+        }
+    }
+    
+    // MARK: - King's Suite Response
+    func parseKingsSuiteText(playerResponse: String) -> String {
+        switch(playerResponse) {
+            case "portrait":
+                return "\nThe portrait is a beautiful piece of art commissioned by the King as a gift to his wife to commemorate five happy years of marriage.\n"
+            case "greatsword":
+                return "\nThe King’s sword is the epitome of great work done by the smiths of the kingdom. Given to him on the day of his coronation, this sword has been used to slay many great monsters.\n"
+            case "cracked door":
+                if !approachedCrackedDoor {
+                    approachedCrackedDoor = true
+                    return "\nYou approach the door and you begin to recognize the voices as those of the King and the wizard. Do you try and LISTEN?\n"
+                } else {
+                    return "\nUh... I don't think you can get any closer to the cracked door.\n"
+                }
+            case "listen":
+                if approachedCrackedDoor {
+                    currentNPC = wizard
+                    return "\nYou creep a little closer to the door. The occupants inside don't notice your presence. You hear the conversation...\n"
+                } else {
+                    return "\nYou hear a faint noise coming from the CRACKED DOOR. Were there to be people in the King's Suite while cleaning?\n"
+                }
+            default:
+                return "\nWell you're here... why don't you LOOK around?\n"
         }
     }
 }
