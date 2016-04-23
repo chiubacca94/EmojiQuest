@@ -22,6 +22,9 @@ class Castle : StoryManager {
     var didWash = false
     var didScrub = false
     var didDust = false
+    var wentNorth = false
+    var wentEast = false
+    var selectedBig = false
     
     var currentNPC : NPC?
     var delegate : StoryManager?
@@ -50,9 +53,9 @@ class Castle : StoryManager {
             return "\nThe steward is your boss at the castle. He’s got a self important job title that basically means “head janitor” to cover up for his crippling lack of self-worth. Ignore him when he makes fun of you. He’s just jealous of your fashionable capes. \n\n “Welcome hero! We’ve need of your heroic might in a great quest. Peril approaches! You’re our only hope!” \n\n Your chest swells with pride. You knew this day would come. The steward seems to be in an especially good mood, you could probably ask him anything about the KINGDOM and he might even answer! Or you could just ask for details about your QUEST.\n"
         case StoryScene.TutorialCastleHallways:
             currentNPC = nil
-            return "\nThe steward left without helping you.... what a jerk. \"I need to find the King's Suite\" you mutter to yourself. What do you do?\n"
+            return "\nYou’re in the hallway outside of the STEWARD’S OFFICE. The hallway extends NORTH and SOUTH. The Feast Hall lies to the SOUTH. What do you do?\n"
         case StoryScene.TutorialKingsSuite:
-            return "What happens in the king suite"
+            return "\nYou arrive at the King’s suite.\n"
         case StoryScene.CastleFinalBoss:
             return "After all your effort, you've made it back to the castle."
         default:
@@ -69,11 +72,12 @@ class Castle : StoryManager {
             NSCharacterSet.whitespaceAndNewlineCharacterSet()
         )
         
-        // check for utility phrases
+        // Check for utility phrases
         if text == "look" {
             return lookTextFor(scene)
         }
         
+        // Base response on current NPC
         switch (currentNPC) {
         case is Steward:
             response = steward.respondTo(playerResponse)
@@ -92,6 +96,7 @@ class Castle : StoryManager {
     
     func parseEmoji(playerResponse: String, scene: StoryScene) -> String {
         var response: String = ""
+
         switch (currentNPC) {
         case is Steward:
             response = "\nSteward talks\n"
@@ -117,6 +122,8 @@ class Castle : StoryManager {
     func noNPCResponseText(playerResponse: String, scene: StoryScene) -> String {
         switch (scene) {
         case .TutorialCastleIntroduction:
+            return parseCastleIntroText(playerResponse)
+        case .TutorialCastleHallways:
             return parseHallwayText(playerResponse)
         default:
             return "\nNot implemented yet.\n"
@@ -142,7 +149,8 @@ class Castle : StoryManager {
         }
     }
     
-    func parseHallwayText(playerResponse: String) -> String {
+    // MARK: - Castle Intro Response
+    func parseCastleIntroText(playerResponse: String) -> String {
         if (didDust && didScrub && didWash) {
             delegate?.transitionScene()
         }
@@ -177,6 +185,52 @@ class Castle : StoryManager {
             }
         default:
            return "\nWhat are you doing? You need to WASH, SCRUB, and DUST. Grime isn't just gonna un-grime itself.\n"
+        }
+    }
+    
+    // MARK: - Castle Hallway Response
+    func parseHallwayText(playerResponse: String) -> String {
+        if (wentNorth && wentEast && selectedBig) {
+            delegate?.transitionScene()
+        }
+        
+        if wentNorth {
+            if wentEast {
+                switch(playerResponse) {
+                case "big":
+                    selectedBig = true
+                    gameManager.incrementScore(30)
+                    return "\nYeah...it's that one. [Press Enter to Advance]\n"
+                case "left":
+                    return "\nSeriously? You idiot, it’s obviously the BIG one!\n"
+                case "right":
+                    return "\nSeriously? You idiot, it’s obviously the BIG one!\n"
+                default:
+                    return "\nCome on. We all know you want to pick the BIG one. Stop messin' around.\n"
+                }
+            } else {
+                switch(playerResponse) {
+                case "west":
+                    return "\nYou head west, going down a twisting series of hallways. Suddenly, you come around a corner and find yourself in the barracks! “Oh god, not here!” You think to yourself, and flee. Your socks wrinkle just remembering what happened last time you went in there. Not the socks! You head back\n"
+                case "east":
+                    wentEast = true
+                    return "\n\n"
+                default:
+                    return "\nWhat... are you doing? How about we try something else.\n"
+                }
+            }
+        } else {
+            switch(playerResponse) {
+                case "steward’s office":
+                    return "\nI think he’s done with you, best not to bother him again so soon.\n"
+                case "north":
+                    wentNorth = true
+                    return "\nYou head North. This hallway ends and meets a bigger hallway going EAST and WEST. You know that these lead to different wings of the Castle, but you don’t know which is which.\n"
+                case "south":
+                    return "\nYou walk to the entrance of the Feast Hall. Your chest puffs with pride. Job well done. You’re a hero of the custodial arts! But you have other things to do right now. You head back.\n"
+                default:
+                    return "\nThat doesn't seem really helpful at this point.\n"
+            }
         }
     }
 }
