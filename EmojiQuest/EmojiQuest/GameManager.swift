@@ -31,6 +31,7 @@ class GameManager {
     func newGame() {
         score = 0
         player.newPlayer()
+        gameLost = false
     }
     
     func newGameText() -> String {

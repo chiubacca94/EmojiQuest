@@ -22,6 +22,9 @@ class Castle : StoryManager {
     var didWash = false
     var didScrub = false
     var didDust = false
+    var wentNorth = false
+    var wentEast = false
+    var selectedBig = false
     
     var currentNPC : NPC?
     var delegate : StoryManager?
@@ -50,9 +53,9 @@ class Castle : StoryManager {
             return "\nThe steward is your boss at the castle. He’s got a self important job title that basically means “head janitor” to cover up for his crippling lack of self-worth. Ignore him when he makes fun of you. He’s just jealous of your fashionable capes. \n\n “Welcome hero! We’ve need of your heroic might in a great quest. Peril approaches! You’re our only hope!” \n\n Your chest swells with pride. You knew this day would come. The steward seems to be in an especially good mood, you could probably ask him anything about the KINGDOM and he might even answer! Or you could just ask for details about your QUEST.\n"
         case StoryScene.TutorialCastleHallways:
             currentNPC = nil
-            return "\nThe steward left without helping you.... what a jerk. \"I need to find the King's Suite\" you mutter to yourself. What do you do?\n"
+            return "\nYou’re in the hallway outside of the STEWARD’S OFFICE. The hallway extends NORTH and SOUTH. The Feast Hall lies to the SOUTH. What do you do?\n"
         case StoryScene.TutorialKingsSuite:
-            return "What happens in the king suite"
+            return "\nYou arrive at the King’s suite.\n"
         case StoryScene.CastleFinalBoss:
             return "After all your effort, you've made it back to the castle."
         default:
@@ -63,27 +66,37 @@ class Castle : StoryManager {
 
     func parseText(playerResponse: String, scene: StoryScene) -> String {
         var response: String = ""
-
+        
+        // Clean up and unify player response
+        let text = playerResponse.lowercaseString.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        )
+        
+        // Check for utility phrases
+        if text == "look" {
+            return lookTextFor(scene)
+        }
+        
+        // Base response on current NPC
         switch (currentNPC) {
         case is Steward:
             response = steward.respondTo(playerResponse)
             break
         case is Wizard:
             response = wizard.respondTo(playerResponse)
-            delegate?.transitionScene()
-            
             break
         case is King:
             response = "\nKing talks\n"
             break
         default:
-            return utilityResponseText(playerResponse, scene: scene)
+            return noNPCResponseText(playerResponse, scene: scene)
         }
         return response
     }
     
     func parseEmoji(playerResponse: String, scene: StoryScene) -> String {
         var response: String = ""
+
         switch (currentNPC) {
         case is Steward:
             response = "\nSteward talks\n"
@@ -101,39 +114,48 @@ class Castle : StoryManager {
             response = "\nKing talks\n"
             break
         default:
-            return utilityResponseEmoji(playerResponse, scene: scene)
+            return noNPCResponseEmoji(playerResponse, scene: scene)
         }
         return response
     }
     
-    func utilityResponseText(playerResponse: String, scene: StoryScene) -> String {
-        if (scene == .TutorialCastleIntroduction){
+    func noNPCResponseText(playerResponse: String, scene: StoryScene) -> String {
+        switch (scene) {
+        case .TutorialCastleIntroduction:
+            return parseCastleIntroText(playerResponse)
+        case .TutorialCastleHallways:
             return parseHallwayText(playerResponse)
+        default:
+            return "\nNot implemented yet.\n"
         }
-        return "bluh\n"
     }
     
-    func utilityResponseEmoji(playerResponse: String, scene: StoryScene) -> String {
-        
-        let response_char = "\ngi\n"
-        // Check for item, look
-        // Utility Response Text
-        
-        // Utility response emoji
-        
-        return response_char
+    func noNPCResponseEmoji(playerResponse: String, scene: StoryScene) -> String {
+        return "\nNot implemented yet.\n"
     }
     
-    func parseHallwayText(playerResponse: String) -> String {
-        let text = playerResponse.lowercaseString.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        )
-        
+    func lookTextFor(scene: StoryScene) -> String {
+        switch(scene){
+        case .TutorialCastleIntroduction:
+            return "\nYou look around the great hall of the castle and you notice its enormity. Trophies from great hunts hang on the walls and the floors are lined with tables where the King can entertain his guests.\n"
+        case .TutorialCastleStewardConversation:
+            return "\nThe steward’s office is a small room near the great hall. The walls are bare except for a small window on the far wall that only lets in a little bit of light.\n"
+        case .TutorialCastleHallways:
+            return "\nAll of these hallways look the same. It’s a wonder that more people don’t get lost walking in here.\n"
+        case .TutorialKingsSuite:
+            return "\nThe main room of the suite is a large open room adorned with the King’s possessions. On the far wall is PORTRAIT of the Kings and the Queen, on the wall to the left hangs the King’s GREATSWORD, and there is a CRACKED DOOR to the right from which you can hear voices.\n"
+        default:
+            return "\nsomething went really wrong... you shouldn't be here\n"
+        }
+    }
+    
+    // MARK: - Castle Intro Response
+    func parseCastleIntroText(playerResponse: String) -> String {
         if (didDust && didScrub && didWash) {
             delegate?.transitionScene()
         }
         
-        switch (text) {
+        switch (playerResponse) {
             case "dust":
             if (didDust) {
                 return "\nThere's something to be said about diligence, but this is just pushing it.\n"
@@ -141,7 +163,7 @@ class Castle : StoryManager {
                 introductionMonologueIndex++
                 didDust = true
                 gameManager.incrementScore(10)
-                return "\nNumerous trophies decorate the walls from age-old victories against foreign armies and evil beasts, hard won by heroes of old. Now dust mites invade, seeking to sully the trophies’ luster. Back, foul bits of entropy!\n" + introductionMonologue[introductionMonologueIndex] + "\n"
+                return "\nNumerous trophies decorate the walls from age-old victories against foreign armies and evil beasts, hard won by heroes of old. Now dust mites invade, seeking to sully the trophies’ luster. Back, foul bits of entropy!\n\n" + introductionMonologue[introductionMonologueIndex] + "\n"
             }
             case "wash":
             if (didWash) {
@@ -163,6 +185,52 @@ class Castle : StoryManager {
             }
         default:
            return "\nWhat are you doing? You need to WASH, SCRUB, and DUST. Grime isn't just gonna un-grime itself.\n"
+        }
+    }
+    
+    // MARK: - Castle Hallway Response
+    func parseHallwayText(playerResponse: String) -> String {
+        if (wentNorth && wentEast && selectedBig) {
+            delegate?.transitionScene()
+        }
+        
+        if wentNorth {
+            if wentEast {
+                switch(playerResponse) {
+                case "big":
+                    selectedBig = true
+                    gameManager.incrementScore(30)
+                    return "\nYeah...it's that one. [Press Enter to Advance]\n"
+                case "left":
+                    return "\nSeriously? You idiot, it’s obviously the BIG one!\n"
+                case "right":
+                    return "\nSeriously? You idiot, it’s obviously the BIG one!\n"
+                default:
+                    return "\nCome on. We all know you want to pick the BIG one. Stop messin' around.\n"
+                }
+            } else {
+                switch(playerResponse) {
+                case "west":
+                    return "\nYou head west, going down a twisting series of hallways. Suddenly, you come around a corner and find yourself in the barracks! “Oh god, not here!” You think to yourself, and flee. Your socks wrinkle just remembering what happened last time you went in there. Not the socks! You head back\n"
+                case "east":
+                    wentEast = true
+                    return "\n\n"
+                default:
+                    return "\nWhat... are you doing? How about we try something else.\n"
+                }
+            }
+        } else {
+            switch(playerResponse) {
+                case "steward’s office":
+                    return "\nI think he’s done with you, best not to bother him again so soon.\n"
+                case "north":
+                    wentNorth = true
+                    return "\nYou head North. This hallway ends and meets a bigger hallway going EAST and WEST. You know that these lead to different wings of the Castle, but you don’t know which is which.\n"
+                case "south":
+                    return "\nYou walk to the entrance of the Feast Hall. Your chest puffs with pride. Job well done. You’re a hero of the custodial arts! But you have other things to do right now. You head back.\n"
+                default:
+                    return "\nThat doesn't seem really helpful at this point.\n"
+            }
         }
     }
 }
