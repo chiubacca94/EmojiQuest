@@ -20,6 +20,11 @@ class Forest : StoryManager {
         woodsman.delegate = self
     }
     
+    func newGame() {
+        currentNPC = woodsman
+        woodsman.newGame()
+    }
+    
     func transitionScene() {
         delegate?.transitionScene()
     }
@@ -32,7 +37,7 @@ class Forest : StoryManager {
         if playerResponse.containsOnlyEmojis {
             return woodsman.respondTo(playerResponse)
         } else {
-            return "You can’t speak 😲 ‼️\nThere must be another way to convey your EMOTIONS 😕."
+            return "\nYou can’t speak 😲 ‼️\nThere must be another way to convey your EMOTIONS 😕.\n"
         }
     }
 }

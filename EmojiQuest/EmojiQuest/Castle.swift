@@ -25,6 +25,7 @@ class Castle : StoryManager {
     var wentNorth = false
     var wentEast = false
     var selectedBig = false
+    var approachedCrackedDoor = false
     
     var currentNPC : NPC?
     var delegate : StoryManager?
@@ -38,6 +39,22 @@ class Castle : StoryManager {
         currentNPC = nil
         steward.delegate = self
         wizard.delegate = self
+    }
+    
+    func newGame() {
+        currentNPC = nil
+        introductionMonologueIndex = -1
+        
+        didWash = false
+        didScrub = false
+        didDust = false
+        wentNorth = false
+        wentEast = false
+        selectedBig = false
+        approachedCrackedDoor = false
+        
+        steward.newGame()
+        wizard.newGame()
     }
     
     func transitionScene() {
@@ -55,6 +72,7 @@ class Castle : StoryManager {
             currentNPC = nil
             return "\nYou’re in the hallway outside of the STEWARD’S OFFICE. The hallway extends NORTH and SOUTH. The Feast Hall lies to the SOUTH. What do you do?\n"
         case StoryScene.TutorialKingsSuite:
+            currentNPC = nil
             return "\nYou arrive at the King’s suite.\n"
         case StoryScene.CastleFinalBoss:
             return "After all your effort, you've made it back to the castle."
@@ -73,7 +91,7 @@ class Castle : StoryManager {
         )
         
         // Check for utility phrases
-        if text == "look" {
+        if text.containsString("look") {
             return lookTextFor(scene)
         }
         
@@ -84,6 +102,7 @@ class Castle : StoryManager {
             break
         case is Wizard:
             response = wizard.respondTo(playerResponse)
+            delegate?.transitionScene()
             break
         case is King:
             response = "\nKing talks\n"
@@ -125,6 +144,8 @@ class Castle : StoryManager {
             return parseCastleIntroText(playerResponse)
         case .TutorialCastleHallways:
             return parseHallwayText(playerResponse)
+        case .TutorialKingsSuite:
+            return parseKingsSuiteText(playerResponse)
         default:
             return "\nNot implemented yet.\n"
         }
@@ -214,7 +235,7 @@ class Castle : StoryManager {
                     return "\nYou head west, going down a twisting series of hallways. Suddenly, you come around a corner and find yourself in the barracks! “Oh god, not here!” You think to yourself, and flee. Your socks wrinkle just remembering what happened last time you went in there. Not the socks! You head back\n"
                 case "east":
                     wentEast = true
-                    return "\n\n"
+                    return "\nThe hallway becomes gradually richer and better lit. You find yourself at a dead end, with three doors in front of you. There’s one to your LEFT, one to the RIGHT, and a BIG, heavily decorated one straight ahead. I wonder which is one it is?\n"
                 default:
                     return "\nWhat... are you doing? How about we try something else.\n"
                 }
@@ -231,6 +252,32 @@ class Castle : StoryManager {
                 default:
                     return "\nThat doesn't seem really helpful at this point.\n"
             }
+        }
+    }
+    
+    // MARK: - King's Suite Response
+    func parseKingsSuiteText(playerResponse: String) -> String {
+        switch(playerResponse) {
+            case "portrait":
+                return "\nThe portrait is a beautiful piece of art commissioned by the King as a gift to his wife to commemorate five happy years of marriage.\n"
+            case "greatsword":
+                return "\nThe King’s sword is the epitome of great work done by the smiths of the kingdom. Given to him on the day of his coronation, this sword has been used to slay many great monsters.\n"
+            case "cracked door":
+                if !approachedCrackedDoor {
+                    approachedCrackedDoor = true
+                    return "\nYou approach the door and you begin to recognize the voices as those of the King and the wizard. Do you try and LISTEN?\n"
+                } else {
+                    return "\nUh... I don't think you can get any closer to the cracked door.\n"
+                }
+            case "listen":
+                if approachedCrackedDoor {
+                    currentNPC = wizard
+                    return "\nYou creep a little closer to the door. The occupants inside don't notice your presence. You hear the conversation...\n"
+                } else {
+                    return "\nYou hear a faint noise coming from the CRACKED DOOR. Were there to be people in the King's Suite while cleaning?\n"
+                }
+            default:
+                return "\nWell you're here... why don't you LOOK around?\n"
         }
     }
 }

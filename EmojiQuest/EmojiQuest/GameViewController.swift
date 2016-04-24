@@ -20,7 +20,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     
     var delegate : GameViewProtocol?
     let gameManager = GameManager.sharedInstance
-    var story = Story()
+    let story = Story.sharedInstance
     let player = Player.sharedInstance
     
     override func viewDidLoad() {
@@ -30,6 +30,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         // New scene -- send notification (clear text and new scene)
         center.addObserver(self, selector: "newScene", name: StoryUpdateNotificationKey, object: nil)
         center.addObserver(self, selector: "updatedScore", name: ScoreUpdateNotificationKey, object: nil)
+        center.addObserver(self, selector: "gameOver", name: GameOverNotificationKey, object: nil)
         // Have keyboard automatically appear
         playerInput.becomeFirstResponder()
         gameManager.newGame()
@@ -39,7 +40,6 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         scoreLabel.text = String(gameManager.getScore())
         gameText.text = gameManager.newGameText() + "\n" + story.introductoryText() + "\n"
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -67,10 +67,20 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         })
     }
     
+    func gameOver() {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.gameText.text = " "
+            self.gameText.text = self.gameManager.gameOverReason! + "\n\nEnter Text to return to Main Menu."
+        })
+    }
+    
     // MARK: TextField Delegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if (gameManager.gameLost) {
+            gameManager.newGame()
+            story.newGame()
             delegate?.dismissView()
+            return true
         }
         
         gameText.text = gameText.text + "'" + playerInput.text! + "'" + story.replyToText(playerInput.text!)

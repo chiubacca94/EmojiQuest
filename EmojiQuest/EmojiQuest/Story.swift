@@ -40,6 +40,9 @@ class Story : StoryManager {
     
     func newGame() {
         isTutorial = true
+        forest.newGame()
+        castle.newGame()
+        currentScene = .TutorialCastleIntroduction
     }
     
     func endTutorial() {
@@ -67,6 +70,8 @@ class Story : StoryManager {
             return castle.parseText(playerResponse, scene: currentScene)
         case .TutorialCastleHallways:
             return castle.parseText(playerResponse, scene: currentScene)
+        case .TutorialKingsSuite:
+            return castle.parseText(playerResponse, scene: currentScene)
         case .CastleFinalBoss:
             return castle.parseText(playerResponse, scene: currentScene)
         default:
@@ -90,19 +95,18 @@ class Story : StoryManager {
     }
     
     func transitionScene(){
-        if (!gameManager.gameLost) {
-            let newSceneValue = currentScene.rawValue + 1
-            currentScene = StoryScene(rawValue: newSceneValue)!
+        let newSceneValue = currentScene.rawValue + 1
+        currentScene = StoryScene(rawValue: newSceneValue)!
+            
+        if currentScene == .WoodsOutsideKingdom {
+            isTutorial = false
         }
+        
         // add notification for controller
         NSNotificationCenter.defaultCenter().postNotificationName(StoryUpdateNotificationKey, object: self)
     }
     
     func introductoryText() -> String {
-        if (gameManager.gameLost) {
-            return gameManager.gameOverReason! + "\n\nEnter Text to return to Main Menu."
-        }
-        
         switch (currentScene) {
         case .TutorialCastleIntroduction:
             return castle.introductoryText(currentScene)
