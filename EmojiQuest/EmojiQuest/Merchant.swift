@@ -9,23 +9,9 @@
 
 import Foundation
 
-enum MerchantState : String {
-    case FoundPlayer = "foundPlayer"
-    case PlayerUp = "playerUp"
-    case Willing = "willing"
-}
-
 class Merchant: NPC {
     
     static let sharedInstance = Merchant()
-    let gameManager = GameManager.sharedInstance
-    
-    var currentState : MerchantState = MerchantState.FoundPlayer
-    
-    let positiveEmoji = ["😀", "😁", "☺️","😂","😃","😄","😅","😆","😊","😋", "😎","😹","😸", "😺", "🙆", "🙋", "🙌", "👍", "👌", "✋", "✌️", "🙏", "👆", "✊", "😇"]
-    let negativeEmoji = ["😐", "😑", "😓", "😔", "😕", "😖", "😡", "😠"]
-    let romanticEmoji = ["😉", "💋", "😍", "❤️", "💌", "👄", "😘", "😻", "😗", "😙", "😚", "😽"]
-    
     
     override init() {
         super.init()
