@@ -26,6 +26,7 @@ class Castle : StoryManager {
     var wentEast = false
     var selectedBig = false
     var approachedCrackedDoor = false
+    var noCounter = 0
     
     var currentNPC : NPC?
     var delegate : StoryManager?
@@ -44,6 +45,7 @@ class Castle : StoryManager {
     func newGame() {
         currentNPC = nil
         introductionMonologueIndex = -1
+        noCounter = 0
         
         didWash = false
         didScrub = false
@@ -73,7 +75,7 @@ class Castle : StoryManager {
             return "\nYou’re in the hallway outside of the STEWARD’S OFFICE. The hallway extends NORTH and SOUTH. The Feast Hall lies to the SOUTH. What do you do?\n"
         case StoryScene.TutorialKingsSuite:
             currentNPC = nil
-            return "\nYou arrive at the King’s suite.\n"
+            return "\nYou arrive at the King’s suite. It’s a very posh affair, all done up in velvet and suede, and everything seemed to be gilt in gold. There’s a beautiful PORTRAIT on on the far wall, and a GREATSWORD hanging on the wall to the right. Also to the right, there’s a CRACKED DOOR from which you can hear voices coming. Doesn’t seem like much needs cleaning though. What do you do?\n"
         case StoryScene.CastleFinalBoss:
             return "After all your effort, you've made it back to the castle."
         default:
@@ -102,7 +104,6 @@ class Castle : StoryManager {
             break
         case is Wizard:
             response = wizard.respondTo(playerResponse)
-            delegate?.transitionScene()
             break
         case is King:
             response = "\nKing talks\n"
@@ -221,7 +222,7 @@ class Castle : StoryManager {
                 case "big":
                     selectedBig = true
                     gameManager.incrementScore(30)
-                    return "\nYeah...it's that one. [Press Enter to Advance]\n"
+                    return "\nYou open the big, beautiful door and enter. [Press Enter to Advance]\n"
                 case "left":
                     return "\nSeriously? You idiot, it’s obviously the BIG one!\n"
                 case "right":
@@ -257,27 +258,46 @@ class Castle : StoryManager {
     
     // MARK: - King's Suite Response
     func parseKingsSuiteText(playerResponse: String) -> String {
+        if approachedCrackedDoor {
+            return parseCrackedDoorText(playerResponse)
+        }
+        
         switch(playerResponse) {
             case "portrait":
-                return "\nThe portrait is a beautiful piece of art commissioned by the King as a gift to his wife to commemorate five happy years of marriage.\n"
+                return "\nThe portrait is a beautiful piece of art commissioned by the King as a gift to his wife to commemorate five happy years of marriage. You sigh happily. Things are going so much better now that his first wife is out of the picture. You laugh at your own pun. But you must get to work!\n"
             case "greatsword":
-                return "\nThe King’s sword is the epitome of great work done by the smiths of the kingdom. Given to him on the day of his coronation, this sword has been used to slay many great monsters.\n"
+                return "\nThe King’s sword is the epitome of great work done by the smiths of the kingdom. Given to him on the day of his coronation, this sword has been used to slay many great monsters. You hands get clammy and practically salivate, thinking of getting your grubby little fingers on something like that.\n"
             case "cracked door":
-                if !approachedCrackedDoor {
-                    approachedCrackedDoor = true
-                    return "\nYou approach the door and you begin to recognize the voices as those of the King and the wizard. Do you try and LISTEN?\n"
-                } else {
-                    return "\nUh... I don't think you can get any closer to the cracked door.\n"
-                }
-            case "listen":
-                if approachedCrackedDoor {
-                    currentNPC = wizard
-                    return "\nYou creep a little closer to the door. The occupants inside don't notice your presence. You hear the conversation...\n"
-                } else {
-                    return "\nYou hear a faint noise coming from the CRACKED DOOR. Were there to be people in the King's Suite while cleaning?\n"
-                }
+                approachedCrackedDoor = true
+                return "\nYou approach the door and you begin to recognize the voices as those of the King and the wizard. Do you try and LISTEN?\n"
             default:
                 return "\nWell you're here... why don't you LOOK around?\n"
+        }
+    }
+    
+    func parseCrackedDoorText(playerResponse: String) -> String {
+        switch(playerResponse) {
+        case "leave":
+            return "\nListen friend, we really respect you trying to do your own thing and all, but the plot must move forward. You’re going to listen at this door. Besides, aren’t you the least bit curious?\n"
+        case "listen":
+            currentNPC = wizard
+            gameManager.incrementScore(30)
+            return "\nYou approach and look through the crack of the door. Inside having a friendly argument is the King and the Wizard. They are really such close friends. But what’s this? The Wizards throwing his hands up. The King turns away and the Wizard whispers something--a spell?--which whooshes from his hands straight into the King. Was it a happy spell? Must’ve been. But oh, the expression the King is wearing as he collapses onto the bed isn’t a happy one. Oh, oh no. Standing over the King’s body, the Wizard’s features begin to change - melting, morphing into that of the King! Oh, you know what’s going on here. You’ve decoded these events. The Wizard has killed the King, and is attempting usurp him by taking on his appearance! And you even know motive! They must not have been very good friends after all! These sudden, shocking revelations leave your head spinning and you stumble back from the door, bumping into an end table. A lamp falls off of it and breaks. Oh god. What do you do?\n"
+        case "no":
+            if noCounter == 0 {
+                noCounter++
+                return "\nAre you sure? Not even a little bit?\n"
+            } else if noCounter == 1 {
+                noCounter++
+                return "\nNot at all?\n"
+            } else {
+                gameManager.gameOver("Oh. Well fine then. Your character does his job and avoids the conflict of the story. Nice job, boring pants.")
+                return "\n"
+            }
+        case "yes":
+            return "\nGood. Now type LISTEN.\n"
+        default:
+            return "\nUh...How about we rethink this strategy and try again?\n"
         }
     }
 }
