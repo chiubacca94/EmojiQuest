@@ -10,4 +10,8 @@ import Foundation
 
 class NPC {
     var delegate : StoryManager?
+    
+    func newGame() {
+        
+    }
 }

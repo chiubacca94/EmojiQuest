@@ -29,6 +29,10 @@ class Woodsman: NPC {
         super.init()
     }
     
+    override func newGame() {
+        currentState = WoodsmanState.FoundPlayer
+    }
+    
     func respondTo(playerResponse: String) -> String {
         switch (currentState) {
         case .FoundPlayer:
@@ -41,7 +45,7 @@ class Woodsman: NPC {
     }
     
     func parseResponseIfFound(playerResponse: String) -> String {
-        let continuingText = "You look around and get your bearings. You’re in a thickly wooded forest, characteristic of the King’s Woods, just a few miles away from the castle. Well, this could’ve been a lot worse, you reason. You must get back to the castle to depose the evil Wizard and regain your voice as quickly as possible! But wait, the Woodsman seems to be trying to communicate with you, with a series of grunts and gestures. Mysterious. \n\n \"(emojis asking if you want to eat, rest, go back to camp)\" What do you respond?\n"
+        let continuingText = "You look around and get your bearings. You’re in a thickly wooded forest, characteristic of the King’s Woods, just a few miles away from the castle. Well, this could’ve been a lot worse, you reason. You must get back to the castle to depose the evil Wizard and regain your voice as quickly as possible! But wait, the Woodsman seems to be trying to communicate with you, with a series of grunts and gestures. Mysterious. \n\n \"🍻❓🍳🍴❓💤❔🌲🏡🌲⁉️\" What do you respond?\n"
         
         if positiveEmoji.contains(playerResponse) {
             currentState = .PlayerUp
@@ -51,7 +55,7 @@ class Woodsman: NPC {
             return "\nThe woodsman frown deepens, slightly 😒. He glumly helps you to your feet.\n\n" + continuingText
         } else if romanticEmoji.contains(playerResponse) {
             gameManager.gameOver("The woodsman blushes, and then whacks you over the head. He must not appreciate such forward advances. Try being classier next time.")
-            return ""
+            return "\n"
         } else {
             return "\nThe Woodsman just stares at you. I don't think that worked. Might want to try again.\n"
         }

@@ -24,6 +24,11 @@ class Steward: NPC {
         super.init()
     }
     
+    override func newGame() {
+        givenQuest = false
+        currentState = .GivingIntroInfo
+    }
+    
     func respondTo(playerResponse: String) -> String {
        return parseResponseInfo(playerResponse)
     }

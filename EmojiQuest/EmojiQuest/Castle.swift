@@ -41,6 +41,22 @@ class Castle : StoryManager {
         wizard.delegate = self
     }
     
+    func newGame() {
+        currentNPC = nil
+        introductionMonologueIndex = -1
+        
+        didWash = false
+        didScrub = false
+        didDust = false
+        wentNorth = false
+        wentEast = false
+        selectedBig = false
+        approachedCrackedDoor = false
+        
+        steward.newGame()
+        wizard.newGame()
+    }
+    
     func transitionScene() {
         delegate?.transitionScene()
     }
@@ -86,6 +102,7 @@ class Castle : StoryManager {
             break
         case is Wizard:
             response = wizard.respondTo(playerResponse)
+            delegate?.transitionScene()
             break
         case is King:
             response = "\nKing talks\n"
