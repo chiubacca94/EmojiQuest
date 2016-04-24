@@ -15,7 +15,7 @@ class Merchant: NPC {
     
     override init() {
         super.init()
-    }
+    }/*
     
     override func newGame() {
         currentState = MerchantState.FoundPlayer
@@ -65,5 +65,5 @@ class Merchant: NPC {
         } else {
             return "The Woodsman is staring at you"
         }
-    }
+    }*/
 }

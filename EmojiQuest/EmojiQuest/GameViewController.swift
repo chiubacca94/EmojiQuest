@@ -96,7 +96,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         
         gameText.text = gameText.text + "'" + playerInput.text! + "'" + story.replyToText(playerInput.text!)
         playerInput.text = ""
-      //   _ = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "update:", userInfo: nil, repeats: true)
+         _ = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "update:", userInfo: nil, repeats: true)
         self.gameText.scrollRangeToVisible(NSMakeRange(-1, -1))
        
         return true
