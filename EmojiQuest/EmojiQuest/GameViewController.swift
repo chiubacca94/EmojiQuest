@@ -23,6 +23,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     let story = Story.sharedInstance
     let player = Player.sharedInstance
     
+    var time = NSTimer()
     var time_interval = 0.3;
 
     
@@ -39,12 +40,12 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         gameManager.newGame()
     }
     
-    
-    func onTimer(timer: NSTimer) {
-        time_interval += 0.05
-        timer.fireDate = timer.fireDate.dateByAddingTimeInterval(time_interval)
+    // must be internal or public.
+    func update() {
+        // Something cool
+        
+        
     }
-    
 
     override func viewDidAppear(animated: Bool) {
         scoreLabel.text = String(gameManager.getScore())
@@ -95,7 +96,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         
         gameText.text = gameText.text + "'" + playerInput.text! + "'" + story.replyToText(playerInput.text!)
         playerInput.text = ""
-        _ = NSTimer.scheduledTimerWithTimeInterval(time_interval, target: self, selector: #selector(GameViewController.onTimer(_:)), userInfo: nil, repeats: true)
+      //   _ = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "update:", userInfo: nil, repeats: true)
         self.gameText.scrollRangeToVisible(NSMakeRange(-1, -1))
        
         return true

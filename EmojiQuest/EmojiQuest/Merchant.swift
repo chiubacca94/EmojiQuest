@@ -46,6 +46,7 @@ class Merchant: NPC {
         }
     }
     
+    
     func parseResponseIfFound(playerResponse: String) -> String {
         let continuingText = "You look around and get your bearings. You’re in a thickly wooded forest, characteristic of the King’s Woods, just a few miles away from the castle. Well, this could’ve been a lot worse, you reason. You must get back to the castle to depose the evil Wizard and regain your voice as quickly as possible! But wait, the Woodsman seems to be trying to communicate with you, with a series of grunts and gestures. Mysterious. \n\n \"🍻❓🍳🍴❓💤❔🌲🏡🌲⁉️\" What do you respond?\n"
         
