@@ -23,6 +23,8 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     let story = Story.sharedInstance
     let player = Player.sharedInstance
     
+    var timer = 0;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.playerInput.delegate = self
@@ -35,6 +37,21 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         playerInput.becomeFirstResponder()
         gameManager.newGame()
     }
+    
+    
+    func typewriter()->String{
+     //   NSTimer.scheduledTimerWithTimeInterval(<#T##ti: NSTimeInterval##NSTimeInterval#>, invocation: <#T##NSInvocation#>, repeats: true)
+    }
+    
+    func typer()->Character{
+
+        if(timer < gameText.text.startIndex.distanceTo(gameText.text.endIndex)){
+            timer += 1
+            return gameText.text[gameText.text.startIndex.advancedBy(timer)]
+       
+        }
+    }
+    
 
     override func viewDidAppear(animated: Bool) {
         scoreLabel.text = String(gameManager.getScore())
@@ -85,7 +102,9 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         
         gameText.text = gameText.text + "'" + playerInput.text! + "'" + story.replyToText(playerInput.text!)
         playerInput.text = ""
+        self.typewriter()
         self.gameText.scrollRangeToVisible(NSMakeRange(-1, -1))
+       
         return true
     }
     
@@ -103,6 +122,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     
     @IBAction func infoButtonTouch(sender: AnyObject) {
         let alertVC = UIAlertController(title: "Feature Currently Not Implemented", message: "This would normally lead to the ability to save the game. However, due to prototype status, this feature has not been implemented.", preferredStyle: .Alert)
+        
         
         let okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
         
