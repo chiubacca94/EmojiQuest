@@ -59,7 +59,17 @@ class Woodsman: NPC {
         } else if romanticEmoji.contains(playerResponse) {
             gameManager.gameOver("The woodsman blushes, and then whacks you over the head. He must not appreciate such forward advances. Try being classier next time.")
             return "\n"
-        } else {
+        } else if(directionEmoji.contains(playerResponse)){
+            currentState = .PlayerUp
+            return "\nYou walk down the path to the well and collect water in the bucket to bring back to the camp.\n"
+        } else if(foodAnimalEmoji.contains(playerResponse)){
+            currentState = .PlayerUp
+            return "\nThe woodsman hisses at you, making it clear you are not welcome to any of the food he has right now. Then he rubs his beard. Then he walks away and comes back shortly holding a small hunting bow. He says 'You want, you get yourself.' You take the bow and stand up. You always were better at killing innocent animals than you were at fighting enemies. You head out into the woods to look for something to eat.\n"
+        } else if(plotEmoji.contains(playerResponse)){
+            currentState = .PlayerUp
+            return  "\nThe woodsman rubs his beard thoughtfully, seeming to understand exactly what you were saying. He asks '🚶🏻🏚🏤' You nod vigorously. He rubs his beard some more. Then he walks away and comes back shortly holding a small hunting bow. He says 'You get some for me, I get you there.' You take the bow and stand up. You always were better at killing innocent animals than you were at fighting enemies. You head out into the woods to look for something.\n"
+
+        }else {
             return "\nThe Woodsman just stares at you. I don't think that worked. Might want to try again.\n"
         }
     }
