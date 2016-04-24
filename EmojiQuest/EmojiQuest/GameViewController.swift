@@ -23,7 +23,8 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     let story = Story.sharedInstance
     let player = Player.sharedInstance
     
-    var timer = 0;
+    var time_interval = 0.3;
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,17 +40,9 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     }
     
     
-    func typewriter()->String{
-     //   NSTimer.scheduledTimerWithTimeInterval(<#T##ti: NSTimeInterval##NSTimeInterval#>, invocation: <#T##NSInvocation#>, repeats: true)
-    }
-    
-    func typer()->Character{
-
-        if(timer < gameText.text.startIndex.distanceTo(gameText.text.endIndex)){
-            timer += 1
-            return gameText.text[gameText.text.startIndex.advancedBy(timer)]
-       
-        }
+    func onTimer(timer: NSTimer) {
+        time_interval += 0.05
+        timer.fireDate = timer.fireDate.dateByAddingTimeInterval(time_interval)
     }
     
 
@@ -102,7 +95,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         
         gameText.text = gameText.text + "'" + playerInput.text! + "'" + story.replyToText(playerInput.text!)
         playerInput.text = ""
-        self.typewriter()
+        _ = NSTimer.scheduledTimerWithTimeInterval(time_interval, target: self, selector: #selector(GameViewController.onTimer(_:)), userInfo: nil, repeats: true)
         self.gameText.scrollRangeToVisible(NSMakeRange(-1, -1))
        
         return true

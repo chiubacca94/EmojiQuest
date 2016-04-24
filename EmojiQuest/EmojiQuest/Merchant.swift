@@ -24,7 +24,7 @@ class Merchant: NPC {
     
     let positiveEmoji = ["😀", "😁", "☺️","😂","😃","😄","😅","😆","😊","😋", "😎","😹","😸", "😺", "🙆", "🙋", "🙌", "👍", "👌", "✋", "✌️", "🙏", "👆", "✊", "😇"]
     let negativeEmoji = ["😐", "😑", "😓", "😔", "😕", "😖", "😡", "😠"]
-    let merchant = ["😉", "💋", "😍", "❤️", "💌", "👄", "😘", "😻", "😗", "😙", "😚", "😽"]
+    let romanticEmoji = ["😉", "💋", "😍", "❤️", "💌", "👄", "😘", "😻", "😗", "😙", "😚", "😽"]
     
     
     override init() {
@@ -51,7 +51,7 @@ class Merchant: NPC {
         
         if positiveEmoji.contains(playerResponse) {
             currentState = .PlayerUp
-            return "\nAhh I see, you are too kind.\n\n" + continuingText
+            return "\nThe woodsman nods ...happily? And then he helps you up.\n\n" + continuingText
         } else if negativeEmoji.contains(playerResponse) {
             currentState = .PlayerUp
             return "\nThe woodsman frown deepens, slightly 😒. He glumly helps you to your feet.\n\n" + continuingText
