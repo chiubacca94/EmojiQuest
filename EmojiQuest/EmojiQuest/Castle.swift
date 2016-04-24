@@ -182,7 +182,7 @@ class Castle : StoryManager {
             if (didDust) {
                 return "\nThere's something to be said about diligence, but this is just pushing it.\n"
             } else {
-                introductionMonologueIndex++
+                introductionMonologueIndex += 1
                 didDust = true
                 gameManager.incrementScore(10)
                 return "\nNumerous trophies decorate the walls from age-old victories against foreign armies and evil beasts, hard won by heroes of old. Now dust mites invade, seeking to sully the trophies’ luster. Back, foul bits of entropy!\n\n" + introductionMonologue[introductionMonologueIndex] + "\n"
@@ -191,7 +191,7 @@ class Castle : StoryManager {
             if (didWash) {
                return "\nThere's something to be said about diligence, but this is just pushing it.\n"
             } else {
-                introductionMonologueIndex++
+                introductionMonologueIndex += 1
                 didWash = true
                 gameManager.incrementScore(10)
                 return "\nYou elect to wash the tables. They are stained dark from years of the hearty feasting of heroes, leaving unacceptably unsanitary eating conditions. To the brush with it! Charge!!!\n" + introductionMonologue[introductionMonologueIndex] + "\n"
@@ -200,7 +200,7 @@ class Castle : StoryManager {
             if (didScrub) {
                return "\nThere's something to be said about diligence, but this is just pushing it.\n"
             } else {
-                introductionMonologueIndex++
+                introductionMonologueIndex += 1
                 didScrub = true
                 gameManager.incrementScore(10)
                 return "\nThe floors are filthy from sticky spilt mead, your greatest foe, fearsome for its propensity to accumulate other grime on top of itself. Waver not, however, as you’ve armed yourself properly for the occasion with hearty lye soap and horsehair brush. Fearsome be the might of water based cleaning methods! *Scrub scrub scrub*\n"  + introductionMonologue[introductionMonologueIndex] + "\n"
