@@ -19,7 +19,8 @@ extension String {
             0x2700...0x27BF,   // Dingbats
             0xFE00...0xFE0F,   // Variation Selectors
             0x1F900...0x1F9FF,
-            0x1F600...0x1F64F:
+            0x1F600...0x1F64F,
+            0x2190...0x219F:
                 continue
             default:
                 return false
@@ -38,7 +39,8 @@ extension String {
             0x2700...0x27BF,   // Dingbats
             0xFE00...0xFE0F,   // Variation Selectors
             0x1F900...0x1F9FF,
-            0x1F600...0x1F64F:
+            0x1F600...0x1F64F,
+            0x2190...0x219F:
                 return true
             default:
                 continue
