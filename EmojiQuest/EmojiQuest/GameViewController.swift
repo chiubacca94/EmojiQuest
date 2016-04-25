@@ -47,7 +47,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
    
         if (counter < str.characters.count){
            //gameText.scrollRangeToVisible(NSMakeRange(-1 , -1))
-           let range = NSMakeRange(gameText.text.characters.count - 1, 0)
+           let range = NSMakeRange(gameText.text.characters.count + 20, 0)
             gameText.scrollRangeToVisible(range)
            
            str[str.characters.startIndex.advancedBy(counter)]
@@ -62,7 +62,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     override func viewDidAppear(animated: Bool) {
         scoreLabel.text = String(gameManager.getScore())
         str = gameManager.newGameText() + "\n" + story.introductoryText() + "\n"
-        _ = NSTimer.scheduledTimerWithTimeInterval(0.025, target: self, selector: "update", userInfo: nil, repeats: true)
+        _ = NSTimer.scheduledTimerWithTimeInterval(0.050, target: self, selector: "update", userInfo: nil, repeats: true)
     }
     
     override func didReceiveMemoryWarning() {
