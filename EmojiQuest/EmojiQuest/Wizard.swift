@@ -74,7 +74,7 @@ class Wizard: NPC {
     func parseTextAfterSpotted(playerResponse: String) -> String {
         if !introMonologued {
             introMonologued = true
-            return "\n\"Very cute. Goodbye.\"\n"
+            return "\n\"Very cute. Goodbye.\"[Press Enter to Continue]\n"
         } else {
             delegate?.transitionScene()
             return "\n"
