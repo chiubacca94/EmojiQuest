@@ -25,7 +25,7 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
     
     var time = NSTimer()
     var time_interval = 0.3;
-
+    var counter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,16 +40,24 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         gameManager.newGame()
     }
     
+    var str = ""
     // must be internal or public.
     func update() {
         // Something cool
-        
-        
+   
+        if (counter < str.characters.count){
+           str[str.characters.startIndex.advancedBy(counter)]
+           gameText.text.append(str[str.characters.startIndex.advancedBy(counter)])
+           counter += 1
+           gameText.scrollRangeToVisible(NSMakeRange(-1, -1))
+           print(gameText.text);
+        }
     }
 
     override func viewDidAppear(animated: Bool) {
         scoreLabel.text = String(gameManager.getScore())
-        gameText.text = gameManager.newGameText() + "\n" + story.introductoryText() + "\n"
+        str = gameManager.newGameText() + "\n" + story.introductoryText() + "\n"
+        _ = NSTimer.scheduledTimerWithTimeInterval(0.025, target: self, selector: "update", userInfo: nil, repeats: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -94,11 +102,12 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
             return true
         }
         
-        gameText.text = gameText.text + "'" + playerInput.text! + "'" + story.replyToText(playerInput.text!)
+        
+        str = str + "'" + playerInput.text! + "'" + story.replyToText(playerInput.text!)
         playerInput.text = ""
-         _ = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "update:", userInfo: nil, repeats: true)
+        _ = NSTimer.scheduledTimerWithTimeInterval(0.025, target: self, selector: "update", userInfo: nil, repeats: true)
         self.gameText.scrollRangeToVisible(NSMakeRange(-1, -1))
-       
+    
         return true
     }
     
