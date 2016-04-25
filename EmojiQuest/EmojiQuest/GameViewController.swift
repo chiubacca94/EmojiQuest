@@ -46,10 +46,15 @@ class GameViewController: UIViewController, UITextFieldDelegate, InGameMenuProto
         // Something cool
    
         if (counter < str.characters.count){
+           //gameText.scrollRangeToVisible(NSMakeRange(-1 , -1))
+           let range = NSMakeRange(gameText.text.characters.count - 1, 0)
+            gameText.scrollRangeToVisible(range)
+           
            str[str.characters.startIndex.advancedBy(counter)]
            gameText.text.append(str[str.characters.startIndex.advancedBy(counter)])
+           
            counter += 1
-           gameText.scrollRangeToVisible(NSMakeRange(-1, -1))
+           
            print(gameText.text);
         }
     }

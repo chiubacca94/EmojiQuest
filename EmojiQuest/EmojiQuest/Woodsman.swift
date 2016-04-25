@@ -35,8 +35,6 @@ class Woodsman: NPC {
     var didActivity = false
     var hasBow = false
     
-    let talkingEmoji = ["🗯", "💭", "❗️", "❓", "💬"]
-    
     override init() {
         super.init()
     }
